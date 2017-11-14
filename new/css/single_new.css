@@ -1,0 +1,117 @@
+.layout{
+      width: 100%;
+      max-width: 750px;
+      min-width: 300px;
+      margin: 0 auto;
+      position: relative;
+}
+.introduce{
+	width:100%;
+	padding: 3.75rem 0.9375rem 0;
+}
+ .cover{
+  height:5.25rem;
+ }
+ .intro_l{
+ 	float:left;
+ 	margin-bottom:1.875rem;
+ 	font-size:0.875rem;
+ }
+ .intro_r{
+ 	float:right;
+  margin-top:1px;
+ }
+ .intro_l p{
+ 	font-size: 1.5625rem;
+ 	color:#333333;
+ 	font-weight: bold;
+ 	margin-bottom:0.25rem;
+ }
+ .intro_l .level{
+ 	color:#d5aa09;
+ }
+ .intro_l img{
+ 	width:1rem;
+ 	height:0.75rem;
+ }
+ .intro_r img{
+ 	width:3.75rem;
+ 	height:3.75rem;
+ 	border-radius: 1.875rem;
+ }
+ .color{
+  color:#D5AA09;
+}
+.color1{
+  color:#A1A1A1;
+}
+.color2{
+  color:#B27F09;
+}
+ .mess{
+ position:relative;
+ height:7.6875rem;
+ border-bottom:1px solid #d8d8d8;
+ }
+ .mess>span{
+ 	 display:block;
+ 	 border-bottom:1px solid #d8d8d8;
+     width:2.6875rem;
+     height:1px;
+ }
+ .mess div span{
+ 	font-size:0.875rem;
+ 	color:#999999;
+ }
+ .mess div{
+ 	display:inline-block;
+ 	text-align: center;
+ 	line-height:2.8125rem;
+ 	margin-top:0.75rem;
+ 	width:49%;
+ }
+ .mess div p{
+ 	font-size:1.125rem;
+ 	color:#333333;
+ 	
+ }
+ /*服务详情   begin*/
+ .introduce_server{
+     padding:0 0.625rem;
+     height:12.25rem;
+      border-bottom:1px solid #d8d8d8;
+      margin-bottom:1.875rem;
+ }
+ .introduce_server .content div{
+     width: 33.33%;
+     font-size:0.875rem;
+     color:#333333;
+     float:left;
+     margin-top:1.25rem;
+     text-align:center;
+}
+.introduce_server span{
+	display:block;
+}
+.introduce_server span:nth-child(2n+1){
+    margin-bottom:0.9375rem;
+ }
+.introduce_server img{
+     width: 1.875rem;
+     height: 1.875rem;	
+}
+
+ /*服务详情 end*/
+ .photoes{
+ 	position:relative;
+ }
+ .photoes img{
+ 	width:100%;
+ }
+ .photoes p{
+ 	position:absolute;
+ 	top:1.25rem;
+ 	left:0.9375rem;
+ 	color:#ffffff;
+ 	font-size:1.5625rem;
+ }

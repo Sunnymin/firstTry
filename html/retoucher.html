@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="lib/icheck/icheck.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="static/css/retoucher.css">
+<style type="text/css">
+	.cover{
+		padding: auto;
+		max-width: 2000px;
+		background: rgba(0,0,0,.5);
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		text-align: center;
+		z-index: 100;
+	}
+	.item .cover img{
+	display: block;
+	margin: 0 auto;
+	max-width: 2000px;
+}
+.cover button{
+	margin-top:20px;
+}
+
+</style>
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>修图师审核</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 修图师审核<span class="c-gray en">&gt;</span> 修图师审核 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <div class="title">修图师认证</div>
+	<div class="items">
+		<!-- <div class="item">
+			<table width="100%">
+               <tr class="n1">
+                   <td class="portrait" colspan="1.9">
+                      <span>姓名：高力 <br>
+                            13028276328763762</span>
+                       <div class="img">
+                       <img src="static/h-ui.admin/images/logo1.png"></div>
+                   </td>
+                   <td class="portrait" colspan="1.9">
+                      <span>姓名：高力 <br>
+                            13028276328763762</span>
+                       <div class="img">
+                       <img src="static/h-ui.admin/images/logo1.png"></div>
+                   </td>
+                    <td class="portrait" colspan="1.9">
+                      <span>姓名：高力 <br>
+                            13028276328763762</span>
+                       <div class="img">
+                       <img src="static/h-ui.admin/images/logo1.png"></div>
+                   </td>
+                    <td class="portrait" colspan="1.9">
+                      <span>姓名：高力 <br>
+                            13028276328763762</span>
+                       <div class="img">
+                       <img src="static/h-ui.admin/images/logo1.png"></div>
+                   </td>
+                    <td class="portrait" colspan="1.9">
+                      <span>姓名：高力 <br>
+                            13028276328763762</span>
+                       <div class="img">
+                       <img src="static/h-ui.admin/images/logo1.png"></div>
+                   </td>
+                   <td class="portrait" colspan="1.9">
+                      <span>姓名：高力 <br>
+                            13028276328763762</span>
+                       <div class="img">
+                       <img src="static/h-ui.admin/images/logo1.png"></div>
+                   </td>
+
+               </tr>
+               <tr class="n2">
+                   <td colspan="10"><button>认证通过</button><button>认证不通过</button></td>
+               </tr>
+           </table>
+		</div>	 -->
+	</div>
+
+	
+</div>
+<script type="text/template" id="template1">
+      <%_.each(model,function(item,i){%> 
+       <div class="item">
+			<table width="100%">
+               <tr class="n1">
+                   <td class="portrait" colspan="2">
+                      <span>姓名：<%-item.realName%><br>
+                            <%-item.idCard%></span>
+                       <div class="img">
+                      <img src=<%-"http://image.allxiu.com/"+item.idCardUrl+"?imageView2/1/w/160/h/160"%>>
+                      </div>
+                   </td>
+                 <% for(var k=0; k<item.list.length;k++){%>
+                   <td class="portrait" colspan="2">
+                      <span>试卷<%-k+1%> <br>
+                            用时<%-item.list[k].time%></span>
+                       <div class="img">
+                       <img src=<%-"http://image.allxiu.com/"+item.list[k].truingImgUrl+"?imageView2/1/w/160/h/160"%>></div>
+                   </td>
+                 <%}%>	 
+
+               </tr>
+               <tr class="n2">
+                   <td colspan="10"><button class="yes" value=<%-item.userId%>>认证通过</button><button class="no">认证不通过</button></td>
+               </tr>
+               <div class="cover"> 
+               <img src=<%-"http://image.allxiu.com/"+item.idCardUrl%>>
+               <% for(var m=0; m<item.list.length;m++){%>
+                <img src=<%-"http://image.allxiu.com/"+item.list[m].truingImgUrl%>>
+               <%}%>
+               <div class="cover_btn">
+               <button class="yes" value=<%-item.userId%>>认证通过</button><button class="no">认证不通过</button>	
+               </div>
+               </div>
+           </table>
+		</div>
+	<%})%>	
+    </script>
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="js/underscore-min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+		$.ajax({
+                type: 'POST',
+                url: '/admin/retoucherVerified/list.shtml',
+                data: {},
+                dataType:'json',
+                success: function(data){
+                   console.log(data);
+                   var data=data.data;
+                   
+                   var template1 = _.template($('#template1').html());
+                   $(".items").html(template1({model:data}));
+
+                   $(".img").click(function(){
+                        var p1=$(this).parent().parent().parent().parent();
+                    	p1.prev().show();
+                    })
+                   $(".cover").click(function(){
+                   	$(this).hide();
+                   })
+                   $(".yes").click(function(){
+                   	var userId=$(".yes").val();
+                   	console.log(userId)
+                   	$.ajax({
+                           type: 'POST',
+                           url: '/admin/retoucherVerified/yes.shtml',
+                           data: {userId:userId},
+                           dataType:'json',
+                           success: function(data){
+                               console.log(data);
+                               alert(data.message)
+                               if(data.code==200){
+                               	// location.href="http://test.allxiu.com/admin/html/retoucher.html";
+                               	location.reload()
+                               }
+                           }
+                       })
+                   })
+             // tongguo
+              $(".no").click(function(){
+              	var userId=$(".yes").val();
+                   	$.ajax({
+                           type: 'POST',
+                           url: '/admin/retoucherVerified/no.shtml',
+                           data: {userId:userId},
+                           dataType:'json',
+                           success: function(data){
+                               console.log(data);
+                               alert(data.message)
+                               if(data.code==200){
+                               	window.location.reload();
+                               }
+                           }
+                       })
+                   })
+               } 
+           })
+})
+</script>
+</body>
+</html>

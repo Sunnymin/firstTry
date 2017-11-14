@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="lib/icheck/icheck.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="static/css/photographer_check.css">
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<script src="artTemplate-master/dist/template.js"></script>
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+<script src="js/photographer_check.js"></script>
+<title>摄影师审核</title>
+<style type="text/css">
+    .page-container{
+	position: relative;
+}
+	.check_cover{
+		width:1000px;
+	height:800px;
+	overflow:auto;
+	border:1px solid #999;
+	background: #fff;
+	display: none;
+	position: absolute;
+	top: 10px;
+	left: 200px;
+	}
+	a{
+	text-decoration:none;
+}
+.check_title{
+	height: 40px;
+	line-height:40px;
+	padding:0 10px;
+	border-bottom: 1px solid #999;
+}
+.check_title span:first-child{
+	float: left;
+}
+.check_title span:last-child{
+	float: right;
+}
+#imgid{
+overflow:auto;}
+.photo_id{ 
+	width: 750px;
+	height:100%;
+	overflow:auto;
+	border: 1px solid #999;
+	margin: 10px auto 20px; 
+}
+.check_message{
+	width: 400px;
+	margin:0 auto;
+}
+.check_message .input{
+	width: 150px;
+	height: 40px;
+    border: 1px solid #999;
+}
+.check_button{
+	width: 200px;
+	margin: 50px auto;
+}
+.check_button input{
+	width: 70px;
+	height: 40px;
+	border: 1px solid #999;
+	margin-right: 20px;
+}
+.page{
+	float: right;
+	margin-top: 20px;
+	margin-right: 10px;
+}
+.page input{
+	width: 60px;
+	height: 30px;
+	border: 1px solid #4783DA;
+	margin-left: 10px;
+	color: #fff;
+	background:#4783DA;
+    border-radius: 3px;
+}
+.page input:hover{
+	background: blue;
+}
+.check_button{
+  margin-top: 20px;
+  margin-right: 10px;
+}
+.check_button button{
+  width: 60px;
+  height: 30px;
+  border: 1px solid #4783DA;
+  margin-left: 10px;
+  color: #fff;
+  background:#4783DA;
+    border-radius: 3px;
+}
+.check_button button:hover{
+  background: blue;
+}
+</style>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 摄影师管理 <span class="c-gray en">&gt;</span> 摄影师审核 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<div class="text-c"> 
+        关键字：<input type="text" name="" id="" placeholder=" 昵称/手机号" style="width:250px" class="input-text">
+		申请时间：
+		<input type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}'})" id="logmin" class="input-text Wdate" style="width:120px;">
+		-
+		<input type="text" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d'})" id="logmax" class="input-text Wdate" style="width:120px;">&nbsp;&nbsp;
+		<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+	</div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" data-title="添加资讯" _href="article-add.html" onclick="Hui_admin_tab(this)" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 批量审核</a></span> <span class="r">共有数据：<strong id="datanum">2</strong> 条</span> </div>
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-bg table-hover table-sort" >
+			<thead>
+				<tr class="text-c">
+					<th width="25"><input type="checkbox" name="" value=""></th>
+					<th width="80">ID</th>
+					<th width="180">昵称</th>
+					<th width="180">姓名</th>
+					<th width="180">联系电话</th>
+					<th width="180">申请时间</th>
+					<th width="180">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- <tr>
+					<td><input type="checkbox" value="" name=""></td>
+					<td>1</td>
+					<td class="text-l" style="display:none"><u style="cursor:pointer" class="text-primary" onClick="article_edit('查看','article-zhang.html','10001')" title="查看">资讯标题</u></td>
+					<td>大麦神</td>
+					<td>赵志平</td>
+					<td>13146015795</td>
+					<td>2016/08/18 19:59</td>
+					<td class="td-status" style="display:none"><span class="label label-success radius">已发布</span></td>
+					<td ><a href="javascript:;" title="审核" class="check">审核</a>  <a style="text-decoration:none" class="ml-5" onClick="article_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+				</tr>
+					<tr>
+					<td><input type="checkbox" value="" name=""></td>
+					<td>1</td>
+					<td class="text-l" style="display:none"><u style="cursor:pointer" class="text-primary" onClick="article_edit('查看','article-zhang.html','10001')" title="查看">资讯标题</u></td>
+					<td>大麦神</td>
+					<td>赵志平</td>
+					<td>13146015795</td>
+					<td>2016/08/18 19:59</td>
+					<td class="td-status" style="display:none"><span class="label label-success radius">已发布</span></td>
+					<td ><a href="javascript:;" title="审核" class="check">审核</a>  <a style="text-decoration:none" class="ml-5" onClick="article_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+				</tr> -->
+			</tbody>
+			<tbody id="content">
+			</tbody>
+		</table>
+		<div class="page">
+			 <input type="button" onclick="getList('after');" name="" value="上一页" class="btn_prev">
+		     <input type="button" name="" id="pageNumid" class="btn_current">
+		     <input type="button"  onclick="getList('top');"  name="" value="下一页" class="btn_next">
+		</div>
+	</div>
+	<div class="check_cover" style="">
+		<div class="check_title">
+			<span>摄影师审核</span>
+			<span><a href="" onclick="close()">×</a></span>
+		</div>	
+		<div  id="imgid">
+			<!-- <div class="photo_id"></div>
+			<div class="check_message" id="imgid">
+						姓名：<input type="text" name="" value="" >
+						身份证号：<input type="text" name="" value="">
+			</div> -->
+		</div>
+		<div class="check_button" id="checkButtonid">
+				<!-- <button onclick="yes();">通过</button>
+				<button onclick="no();">不通过</button> -->
+		</div>		
+		</div>
+</div>
+			<script id="userDates" type="text/html">
+				{{include 'list'}}
+			</script>
+			<script id="list" type="text/html">
+    			{{each list as value i}}
+				<tr class="text-c">
+					<td><input type="checkbox" value="" name=""></td>
+					<td>{{value.userId}}</td>
+					<td>{{value.userName}}</td>
+					<td>{{value.realName}}</td>
+					<td>{{value.userPhone}}</td>
+					<td>没有申请时间</td>
+					<td class="td-status" style="display:none"><span class="label label-success radius">已发布</span></td>
+					<td ><a href="javascript:;" title="审核" onclick="check({{value.userId}})">审核</a></td>
+				</tr>
+			{{/each}}
+			</script>
+			<script id="imgs" type="text/html">
+				{{include 'idCardUrla'}}
+				{{include 'namea'}}
+				{{include 'idCarda'}}
+			</script>
+			<script id="idCardUrla" type="text/html">
+				<div class="photo_id"><img src={{idCardUrla}}  width="100%" height="100%" /></div>
+			</script>
+			<script id="namea" type="text/html">
+				<div class="check_message">
+					姓名：<input  type="text" name="" value={{namea}} >
+			</script>
+			<script id="idCarda" type="text/html">
+					身份证号：<input type="text" name="" value={{idCarda}} >
+				</div>
+			</script>
+			<script id="buttons" type="text/html">
+				{{include 'userIda'}}
+			</script>
+			<script id="userIda" type="text/html">
+				<button onclick="yes({{userIda}});">通过</button>
+				<button onclick="no({{userIda}});">不通过</button>
+			</script>
+			<script id="pageNum" type="text/html">
+				{{include 'page'}}
+			</script>
+			<script id="page" type="text/html">
+				{{page}}
+			</script> 
+</body>
+</html>

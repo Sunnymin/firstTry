@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title>摄影师主页</title>
+         <link rel="stylesheet" type="text/css" href="css/base.css">
+         <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+         <link rel="stylesheet" type="text/css" href="css/photographer_new.css">
+         <script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a3d23724d5078b24']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+    </head>
+   <body>
+   <div class="layout">
+        <!-- 第一个轮播图 begin-->
+     <div class="wraper_cover">
+   	 <div id="slider" class="view swipe ">
+        <ul class="swipe-wrap">
+        </ul>
+      </div>
+    </div>
+   	     <!-- 第一个轮播图 end-->
+   	     <!-- 摄影师简介 begin-->
+   	     <div class="introduce">
+   	      <div class="intro">
+            <div class="cover">
+   	        </div>
+   	        	<div class="mess clearfix">
+   	        	</div>
+   	        </div>
+   	     </div>
+   	     <!-- 摄影师简介 end -->
+        <!--  <div class="sort">
+
+         </div> -->
+         <div class="photoed photoed_">
+         </div>
+         <!-- 拍摄过的美片 begin-->
+         <div class="photoed photoes">
+           
+         </div>
+         <!-- 拍摄过的美片 end-->
+         <div class="sort sort_">
+
+         </div>
+          <div class="sort sort_2">
+          </div>
+         
+   	     <!-- 摄影师拍照类别  begin -->
+   	   <div class="sorts">
+   	   </div>
+   	     <!-- 摄影师拍照类别  end -->
+   	     <!-- 摄影师评价  begin  -->
+   	   <div class="assess">
+   	  	 <div class="assessment">
+   	  	 </div>
+   	  </div>
+   	     <!-- 摄影师评价  end  -->
+   	     <!-- 立即下载  begin-->
+      <div class="download_"></div>
+         <!-- 立即下载  end-->
+   </div>
+   <script type="text/template" id="template1">
+           <%_.each(bestImgs,function(item,i){%>
+            <li>
+                <a href="javascript:;">
+                    <img src=<%-"http://image.allxiu.com/"+item+"?imageView2/1/w/750/h/500"%>>
+                </a>
+            </li>
+             <%});%>
+    </script>
+   <script type="text/template" id="template2">
+ <div class="cover">
+          <div class="intro_l">
+            <p><%-model.userName%></p>
+             <%if(model.levelName=="铜级"){%>
+                    <img src="./images/copper.png" >
+                    <span class="color2"><%-model.levelName%> • </span>
+                    <%}else if(model.levelName=="银级"){%>
+                    <img src="./images/silver.png" >
+                    <span class="color1"><%-model.levelName%> • </span>
+                    <%}else if(model.levelName=="钻级"){%>
+                    <img src="./images/diamond.png" >
+                    <span class="diamond"><%-model.levelName%> • </span>
+                    <%}else if(model.levelName=="金级"){%>
+                    <img src="./images/gold.png" >
+                    <span class="color"><%-model.levelName%> • </span>
+                    <%}%>
+                    <span class="addr">我拍过 <a href=<%-"map1.html?serviceUserId="+serviceUserId%>><%-model.placeNum%>个地方</a></span>
+          </div>
+          <div class="intro_r">
+              <img src=<%-"http://image.allxiu.com/"+model.userHeadUrl+"?imageView2/1/w/64/h/64"%>>
+          </div>
+  </div>
+          <!-- <div class="mess clearfix">
+              <span></span>
+             <p>"<%-intro%>"</p>
+              <audio id="myVideo">你的浏览器不支持video标签</audio>
+              <img src="./images/listen.png">
+          </div> -->
+   </script>
+   
+   <!--  <script type="text/template" id="template8">
+            <div class="title">
+                     <h4>我拍摄过的AB面</h4>
+                     <p>&nbsp;<%-"· "+abAlbum.length+"套"%></p>
+            </div>
+            <div id="test1">
+            <div class="swiper-container">
+               <div class="swiper-wrapper">
+                  <%_.each(abAlbum,function(item,i){%>
+                   <div class="swiper-slide">
+                      <a href=<%- "ever.html?orderId="+item.orderId%>>
+                      <img src=<%-"http://image.allxiu.com/"+item.firstImg+"?imageView2/1/w/300/h/450"%> >
+                     
+                      </a>
+                  </div>
+                 <%});%>
+               </div>
+            </div>
+         </div>
+    </script> -->
+   <!--  <script type="text/template" id="template9">
+    <div class="title">
+                     <h4>棚拍</h4>
+                     <p>&nbsp;<%-"· "+works[m].workSize+"套"%></p>
+            </div>
+            <div id="test2">
+            <div class="swiper-container">
+               <div class="swiper-wrapper">
+                  <%_.each(works[m].imgArray,function(item,i){%>
+                   <div class="swiper-slide">
+                      <a href=<%- "single_new.html?workId="+works[m].idArray[i]+"&serivceUserId="+serviceUserId%>>
+                      <img src=<%-"http://image.allxiu.com/"+item+"?imageView2/1/w/300/h/450"%> >
+                     
+                      </a>
+                  </div>
+                 <%});%>
+               </div>
+            </div>
+         </div>
+    </script> -->
+  <!--  <script type="text/template" id="template3">
+   <%_.each(works,function(item,i){%>
+      <div class="sort">
+      <% if(i!=m){%>
+            <div class="title">
+                     <h4><%-item.tabName%></h4>
+                     <p>&nbsp;<%-"· "+item.imgArray.length+"套"%></p>
+                     <span>￥<%-item.price%></span>
+            </div>
+            
+            <div id="test">
+            <div class="swiper-container">
+               <div class="swiper-wrapper">
+                  <% for(var k=0; k<works[i].imgArray.length;k++){%>
+                   
+                   <div class="swiper-slide">
+                      <a href=<%- "single_new.html?workId="+works[i].idArray[k]+"&serivceUserId="+serviceUserId%>>
+                      <img src=<%-"http://image.allxiu.com/"+item.imgArray[k]+"?imageView2/1/w/750/h/468"%> >
+                      <p><%-item.workNameArray[k]%></p>
+                      <p class="n1"><%-item.shot_duration%>小时拍摄时长 · <%-item.shot_num%>张原片 · <%-item.refinement_num%>张精修</p>
+                      </a>
+                  </div>
+                  
+                  <%}%>  
+               </div>
+            </div>
+         </div>
+         <%}%>
+         </div>
+       <%});%>
+    </script> -->
+   <!--  <script type="text/template" id="template4">
+      <div class="title">
+             <p><%if(hasTotal){%>
+             <%-orderReviews[0].total%>
+             <%}else{%>
+             0<%}%>条评价</p>
+             <a href=<%-"assessment.html?serviceUserId="+serviceUserId%>><span>查看全部评价</span></a>
+           </div>
+            <div class="item">
+            <%_.each(orderReviews,function(item,i){%>
+              <div class="content">
+                <div class="assessmenter clearfix">
+                   <img src=<%-"http://image.allxiu.com/"+item.userHeadUrl+"?imageView2/1/w/64/h/64"%>>
+                   <div>
+                   <span><%-item.userName%></span>
+                   <span><%if(item.star==1){%>
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                    <%}else if(item.star==2){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                    <%}else if(item.star==3){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <%}else if(item.star==4){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                       <%}else if(item.star==5){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                    <%}%></span>
+                   </div>
+                   <span>&nbsp;<%-item.createTime%></span>
+                </div>
+                <p><%-item.content%></p>
+                <div class="p_tu">
+                 <%_.each(item.reviewsImgs,function(item1,j){%>
+                  <a href=<%-"pic.html?url=http://image.allxiu.com/"+item1%>>
+                  <img src=<%-"http://image.allxiu.com/"+item1+"?imageView2/1/w/128/h/128"%>>
+                  </a>
+                 <%})%>
+                </div>
+                <%if(item.replyContent!=""){%>
+                 <p><span class="color_blue">摄影师回复 :</span> "<%-item.replyContent%>"</p>
+                 <%}%>
+              </div>
+                <%});%>
+   </script> -->
+    <script type="text/template" id="template5" >
+           <div class="download">
+             <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.meipian.www"><span><img src="images/talk.png"></span><span>联系摄影师</span></a>
+            </div>
+    </script>
+    <script type="text/template" id="template10">
+        <div class="sort">
+            <div class="title">
+                     <h4>代表作品</h4>
+                     <p>&nbsp;<%-"· "+work.length+"套"%></p>
+            </div>
+           <div id="test4">
+            <div class="swiper-container">
+               <div class="swiper-wrapper">
+                  <%_.each(work,function(item,i){%>
+                   <div class="swiper-slide">
+                      <a href=<%- "single_new.html?workId="+item.workId+"&serivceUserId="+serviceUserId%>>
+                      <img src=<%-"http://image.allxiu.com/"+item.firstImg+"?imageView2/1/w/750/h/468"%> >
+                      <!-- <p><%-item.placeName%></p>
+                      <p class="n1">1小时拍摄时长 · 8张精修</p> -->
+                      <p class="tab"><%-item.tabName%></p>
+                      </a>
+
+                  </div>
+                 <%});%>
+               </div>
+            </div>
+         </div>
+         </div>
+   </script>
+    <script type="text/template" id="template6">
+       <!--  <div class="sort">
+            <div class="title">
+                     <h4>我拍摄过的美片</h4>
+                     <p>&nbsp;<%-"· "+album[0].orderCount+"套"%></p>
+            </div>
+           <div id="test3">
+            <div class="swiper-container">
+               <div class="swiper-wrapper">
+                  <%_.each(album,function(item,i){%>
+                   <div class="swiper-slide">
+                       <a href=<%- "ever.html?orderId="+item.orderId%>>
+                      <img src=<%-"http://image.allxiu.com/"+item.firstImg+"?imageView2/1/w/750/h/468"%> >
+                      <p><%-item.placeName%></p>
+                      <p class="n1">1小时拍摄时长 · 8张精修</p>
+                      </a>
+                  </div>
+                 <%});%>
+               </div>
+            </div>
+         </div>
+         </div> -->
+
+         <div class="title">拍摄过的美片 · <%-album[0].orderCount%>套</div>
+     <%_.each(album,function(item,i){%>
+        <div class="photo border">
+          <a href=<%-"ever.html?orderId="+item.orderId%>>
+            <img src=<%-"http://image.allxiu.com/"+item.firstImg+"?imageView2/1/w/700/h/470"%>>
+            <p class="tab"><%-item.tabName%></p>
+          </a>
+          <p class="cover">· <%-item.cityName%>  <%-item.placeName%> ·</p>  
+           <p class="photographer_name"><%-item.serviceUserName%> <br>
+           <%if(item.serviceLevelName=="铜级"){%>
+                    <img src="./images/copper.png" >
+                    <span class="color2"><%-item.serviceLevelName%> • </span>
+                    <%}else if(item.serviceLevelName=="银级"){%>
+                    <img src="./images/silver.png" >
+                    <span class="color1"><%-item.serviceLevelName%> • </span>
+                    <%}else if(item.serviceLevelName=="钻级"){%>
+                    <img src="./images/diamond.png" >
+                    <span class="diamond"><%-item.serviceLevelName%> • </span>
+                    <%}else if(item.serviceLevelName=="金级"){%>
+                    <img src="./images/gold.png" >
+                    <span class="color"><%-item.serviceLevelName%> • </span>
+                    <%}%><span><%-item.serviceLevelIntegral%>积分</span> <br>
+                    <span class="line"></span> 
+            </p>
+           <div class="n1">
+            <img src=<%-"http://image.allxiu.com/"+item.serviceUserHeadUrl+"?imageView2/1/w/80/h/80"%>>
+           </div>
+           <span></span>
+      <div class="pingjia">
+        <img src=<%-"http://image.allxiu.com/"+item.userHeadUrl+"?imageView2/1/w/80/h/80"%>>
+        <p><span><%-item.serviceUserName%></span>
+        <span><%if(item.star==1){%>
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                    <%}else if(item.star==2){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                    <%}else if(item.star==3){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <%}else if(item.star==4){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                       <%}else if(item.star==5){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                    <%}%></span></p>
+         <p class="content"><%-item.content%></p>
+         <div class="p_tu">
+                 <%_.each(item.reviewsImg,function(item1,j){%>
+                  <a href=<%-"pic.html?url=http://image.allxiu.com/"+item1%>>
+                  <img src=<%-"http://image.allxiu.com/"+item1+"?imageView2/1/w/128/h/128"%>>
+                  </a>
+                 <%})%>
+                </div>
+                <%if(item.replyContent!=""){%>
+                 <p class="reply"><span class="color_blue">摄影师回复 :</span> "<%-item.replyContent%>"</p>
+                 <%}%>
+              </div>
+      </div>
+    <%});%>
+   </script>
+    
+   <script type="text/javascript" src="js/common.js"></script>
+   <script type="text/javascript" src="js/zepto.js"></script>
+   <script type="text/javascript" src="js/swipe.js"></script>
+   <script type="text/javascript" src="js/swiper.min.js"></script>
+   <script type="text/javascript" src="js/index.js"></script>
+   <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+     $(document).ready(function(){
+      var url = location.href;
+      var serviceUserId;var hasTotal=true;var headUrl,imgUrl;var m=-1;
+                 /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                      url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+
+               serviceUserId = request('serviceUserId');
+               
+             
+              /*--获取网页传递的参数 end--*/
+   $.ajax({
+          type: 'POST',
+          url: '/'+test+'/photographer/getPhotographerHome',
+          data: { serviceUserId:serviceUserId},
+          dataType: 'json',
+          success: function(data){
+             console.log(data);
+             var data=data.data;
+             // var result=data.work;
+             // var orderReviews=data.orderReviews;
+             var bestImgs=data.bestImgs;
+             var intro=data.intro;
+             var album=data.album;
+             var work=data.work;
+             // var abAlbum=data.abAlbum;
+             if(bestImgs.length>=1){
+             headUrl="http://image.allxiu.com/"+bestImgs[0]+"?imageView2/1/w/128/h/128";
+             bestImgs.push(bestImgs[0]);
+             }else{
+              headUrl="./images/homepage.png";
+            }
+             
+              // if(orderReviews.length==0){
+              //     hasTotal=false;
+              //   }else{
+              //     hasTotal=true;
+              //   }
+              if(bestImgs.length==0){
+                 $(".view").html('<img src="./images/homepage.png" alt="">');
+              }else{
+                 var template1 = _.template($('#template1').html())
+              $(".swipe-wrap").html(template1({bestImgs:bestImgs}));
+
+                 var mySwipe = Swipe(document.getElementById('slider'),{
+                  auto:2700,
+               });
+              }
+               
+                $("title").html("美片认证摄影师"+"-【"+data.userName+"】——"+data.intro);
+                
+              var template2 = _.template($('#template2').html())
+              $(".intro").html(template2({model:data,serviceUserId:serviceUserId,intro:intro}));
+              $(".introduce").addClass("border");
+               // 播放音频
+               //   var MV=document.getElementById("myVideo");
+               //   MV.src=data.audioUrl;
+               // $(".mess img").click(function(){
+               //     MV.play();
+               // });
+                 // 播放音频
+             //     if(intro==null){
+             //  $(".mess")[0].style.height=6+"rem";
+             //  $(".mess img")[0].style.bottom=1.3125+"rem";
+             // }
+
+             // var template7 = _.template($('#template7').html())
+             //  $(".sort").html(template7({album:album}));
+
+              if(work.length!=0){
+               var template10 = _.template($('#template10').html())
+               $(".photoed_").html(template10({work:work,serviceUserId:serviceUserId})); 
+              }
+                 var swiper = new Swiper('#test4 .swiper-container', {
+                 pagination: '.swiper-pagination',
+                 paginationClickable: true,
+                 spaceBetween: 4,
+                });
+
+            if(album.length!=0){
+               var template6 = _.template($('#template6').html())
+               $(".photoes").html(template6({album:album,serviceUserId:serviceUserId})); 
+              }
+                 var swiper = new Swiper('#test3 .swiper-container', {
+                 pagination: '.swiper-pagination',
+                 paginationClickable: true,
+                 spaceBetween: 4,
+                });
+
+              // if(abAlbum.length!=0){   
+              // var template8 = _.template($('#template8').html())
+              // $(".sort_").html(template8({abAlbum:abAlbum}));
+              // }
+              // var swiper1 = new Swiper('#test1 .swiper-container', {
+              //    pagination: '.swiper-pagination',
+              //    paginationClickable: true,
+              //    spaceBetween: 15,
+              //   });
+              
+              // for(var i = 0;i<result.length;i++){
+              //   var xing=result[i];
+              //   if(xing.tabName=="棚拍"){
+              //     m=i;
+              //     console.log(m)
+              //   }
+              // }
+              // if(m!=-1){
+              //  var template9 = _.template($('#template9').html())
+              // $(".sort_2").html(template9({works:result,m:m,serviceUserId:serviceUserId})); 
+              // }
+              
+              // var swiper2 = new Swiper('.sort_2 .swiper-container', {
+              //    pagination: '.swiper-pagination',
+              //    paginationClickable: true,
+              //    spaceBetween: 15,
+              //   });
+
+              //  var template3 = _.template($('#template3').html())
+              // $(".sorts").html(template3({works:result,serviceUserId:serviceUserId,m:m}));
+              //  var swiper = new Swiper('#test .swiper-container', {
+              //    pagination: '.swiper-pagination',
+              //    paginationClickable: true,
+              //    spaceBetween: 4,
+              //   });
+              
+
+             // var template4 = _.template($('#template4').html())
+             // $(".assessment").html(template4({orderReviews:orderReviews,serviceUserId:serviceUserId,hasTotal:hasTotal}));
+
+             //  var mm=$(".item div").html();
+             //    if(mm==null){
+             //      $(".item").addClass("sort_1");
+             //      $(".item").html("该摄影师暂无任何评价");
+             //    }
+
+                 var template5 = _.template($('#template5').html())
+                 $(".download_").html(template5({}));
+
+                  // 第二次请求 begin
+                              $.ajax({
+              type: 'POST',
+              url: '/'+test+'/wxconfig/getConfig',
+              data:{url:url},
+             dataType: 'json',
+             success: function(data){
+                
+                var datas = data.data;
+                
+wx.config({
+    debug: false, 
+    appId: datas.appId, 
+    timestamp: datas.timestamp, 
+    nonceStr: datas.nonceStr, 
+    signature: datas.signature,
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ'] 
+});
+
+wx.ready(function(){
+    // 获取“分享到朋友圈”
+    wx.onMenuShareTimeline({
+        title:$("title").html(), 
+        desc: $("title").html(),
+        link:location.href,
+        imgUrl:headUrl 
+    });
+    // 获取“分享给朋友”
+    wx.onMenuShareAppMessage({
+        title: '拍照片，上美片',
+        desc: $("title").html(), 
+        link:location.href,
+        imgUrl:headUrl, 
+        type: 'link', 
+    });
+    // “分享到QQ”
+     wx.onMenuShareQQ({
+       title: '拍照片，上美片', 
+        desc: $("title").html(),
+        link:location.href,
+        imgUrl:headUrl,
+        type: 'link', 
+      
+    });
+});
+wx.error(function(res){
+   console.log(res)
+    
+});
+ },
+    error: function(){
+     }
+      });
+ // 第二次请求end  
+         }
+           });                    
+  })
+    </script>
+   </body>
+</html>

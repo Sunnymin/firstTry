@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML5视频播放器</title>
+<style type="text/css">
+	.input1{
+		border:1px solid #ff5858;
+    border-radius:0.25rem;
+    width:6.75rem;
+    height:2.375rem;
+    font-size:0.9375rem;
+   color:#ff5858;
+   line-height:2.375rem;
+   background: #ffffff;
+	}
+	.input2{
+		border:1px solid #999999;
+    border-radius:0.25rem;
+    width:6.75rem;
+    height:2.375rem;
+    font-size:0.9375rem;
+   color:#999999;
+   line-height:2.375rem;
+   background: #ffffff;
+	}
+</style>
+</head>
+
+<body>
+<a href="../new/map1.html" style="float:left">1111111</a>
+<audio id="myVideo">你的浏览器不支持video标签</audio>
+<a href="#" onClick="playlist(this)" id="jieba4"><img src="../new/images/logo.png"></a>
+<a href="#" onClick="playlist(this)" id="narutoop3">铁拳</a>
+<input class="input1" id="btn" type="button" name="" value="获取验证码">
+<script type="text/javascript" src="../new/js/zepto.js"></script>
+<script>
+$(document).ready(function(){
+
+
+function playlist(a){
+	var MV=document.getElementById("myVideo");
+	MV.src=a.id+'.mp4';
+	MV.play();
+	}
+	var btn=document.getElementById("btn");
+	 var countdown=60; 
+function settime(val) { 
+if (countdown == 0) { 
+val.setAttribute("disabled", false); 
+val.value="获取验证码"; 
+} else { 
+val.setAttribute("disabled", true); 
+$(val).removeClass("input1").addClass("input2")
+val.value=countdown + "s"; 
+countdown--; 
+} 
+setTimeout(function() { 
+settime(val) 
+},1000)
+}
+btn.onclick=function(){
+	settime(btn);
+}
+})
+</script>
+</bod

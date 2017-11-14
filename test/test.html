@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>基本地图展示</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <script src="http://cache.amap.com/lbs/static/es5.min.js"></script>
+    <script src="http://webapi.amap.com/maps?v=1.3&key='50084e2d7958e8401a7e6a00e6037c26'"></script>
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+</head>
+<style type="text/css">
+	
+</style>
+<body>
+<a href="../new/map1.html"><div id="container"></div>
+</a>
+<script>
+    
+// function getLocalTime(nS) {     
+//        // return new Date(parseInt(nS)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " "); 
+//        var d= new Date(parseInt(nS)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");  
+//        var   year=d.getYear();     
+//               var   month=d.getMonth()+1;     
+//               var   date=d.getDate();     
+//               var   hour=d.getHours();     
+//               var   minute=d.getMinutes();     
+//               var   second=d.getSeconds();     
+//               return   year+"-"+month+"-"+date+"   "+hour+":"+minute+":"+second;       
+//     } 
+//     console.log(getLocalTime(1484825984929))  //2017/1/19 下午7:39:44
+      // console.log(new Date(1484825984929).toLocaleString().replace(/:\d{1,2}$/,' '))
+      // function   formatDate(now)   {     
+      //         var   year=now.getFullYear();     
+      //         var   month=now.getMonth()+1;     
+      //         var   date=now.getDate();     
+      //         var   hour=now.getHours();     
+      //         var   minute=now.getMinutes();     
+      //         var   second=now.getSeconds();     
+      //         return   year+"-"+month+"-"+date+"   "+hour+":"+minute+":"+second;     
+      //         }     
+         
+      //         var   d=new   Date(1230999938);     
+      //         alert(formatDate(d));
+      function   formatDate(now)   {     
+              var   year=now.getFullYear();     
+              var   month=now.getMonth()+1;     
+              var   date=now.getDate();     
+              var   hour=now.getHours();     
+              var   minute=now.getMinutes();     
+              var   second=now.getSeconds();     
+              return   year+"-"+month+"-"+date+" · "+hour+":"+minute+":"+second;     
+              }  
+              var time_=1484825984929;
+          var time_1=new Date(time_)
+           var creat=formatDate(time_1);
+           console.log(time_,time_1,creat) 
+           console.log(formatDate(new Date()) ) 
+           var o ="left";var obj={left:333}
+console.log(o,obj)
+</script>
+</body>
+</html>

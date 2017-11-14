@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title></title>
+   </head>
+   <body>
+   <script type="text/javascript"> </script>
+   <script type="text/javascript">
+    /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                      url = "test.allxiu.com/h5/new/ever.html?orderId=MjExNzEwMTgxMTUwNzcyODY3"; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+               // var url="test.allxiu.com/h5/new/ever.html?orderId=MjExNzEwMTgxMTUwNzcyODY3"
+              var orderId = request('orderId');
+              test=decodeURI(orderId);
+              test_=encodeURI(orderId);
+              test3=decodeURI(test_)
+                /*--获取网页传递的参数 end--*/
+   	var str="MjExNzEwMTgxMTUwNzcyODY3";
+   	var str_="TWpFeE56RXdNVGd4TVRVd056Y3lPRFkz";
+   	// var str1=211710181150772867;
+    // var str2=encodeURI(str1);
+   	var str3=decodeURI(str);
+   	var str_1=decodeURI(str_);
+   	var str_2=decodeURI(str_1);
+   	// console.log(str,str1,str2,str3);
+   	console.log(str_2,str_1);
+   	console.log(str3)
+   	console.log(orderId,test,test_,test3)
+      
+   </script>
+   </body>
+</html>

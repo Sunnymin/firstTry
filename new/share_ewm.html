@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title></title>
+         <link rel="stylesheet" type="text/css" href="css/base.css">
+         <link rel="stylesheet" type="text/css" href="css/share_ewm.css">
+    </head>
+   <body>
+   <div class="layout">
+    <div class="totle">
+      <div class="load">
+         <div class="fl">
+          <div class="fl"><img src="images/logo.png"></div>
+          <div class="fr">
+             <p>美片 · 约拍神器</p>
+             <p>口碑爆表的摄影平台</p>
+          </div>
+        </div>
+      </div>
+      <div class="pic">
+         <img src="images/logo.png">
+         <p>长按或扫描注册账户</p>
+      </div>
+    </div>
+   </div>
+   <script type="text/template" id="template1">
+         <img src=<%-"http://image.allxiu.com/"+model+"?imageView2/1/w/360/h/360"%>>
+         <p>长按或扫描注册账户</p>
+   </script>
+   <script type="text/javascript" src="js/common.js"></script>
+   <script type="text/javascript" src="js/zepto.js"></script>
+   <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+   <script type="text/javascript"> 
+      $(document).ready(function(){
+      var phone;
+       /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                      url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+              var userId = request('userId');
+             /*--获取网页传递的参数 end--*/
+              $.ajax({
+                         type: 'POST',
+                         url: '/'+test+'/sale/getQrCode',
+                         data: { userId:userId},
+                         dataType:'json',
+                         success: function(data){
+                              console.log(data);
+                            var data=data.data;
+                           var template1 = _.template($('#template1').html());
+                          $(".pic").html(template1({model:data}));
+                          }
+                        });
+
+              // 分享请求  begin 
+                $.ajax({
+              type: 'POST',
+              url: '/'+test+'/wxconfig/getConfig',
+              data:{url:url},
+             dataType: 'json',
+             success: function(data){
+               var datas = data.data;
+                var title="送你美片VIP会员";
+             var desc="扫码注册即可获得VIP，永久享受美片全系列产品9折优惠";
+                var img="http://app.allxiu.com/h5/new/images/logo.png";
+                
+wx.config({
+    debug: false, 
+    appId: datas.appId, 
+    timestamp: datas.timestamp, 
+    nonceStr: datas.nonceStr, 
+    signature: datas.signature,
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ'] 
+});
+
+wx.ready(function(){
+    // 获取“分享到朋友圈”
+    wx.onMenuShareTimeline({
+        title:title, 
+        desc: desc,
+        link:location.href,
+        imgUrl:img, 
+    });
+    // 获取“分享给朋友”
+    wx.onMenuShareAppMessage({
+        title: title,
+        desc: desc, 
+        link:location.href,
+        imgUrl:img, 
+        type: 'link', 
+    });
+    // “分享到QQ”
+     wx.onMenuShareQQ({
+       title: title, 
+        desc: desc,
+        link:location.href,
+        imgUrl: img,
+        type: 'link', 
+      
+    });
+});
+wx.error(function(res){
+   console.log(res)
+    
+});
+
+
+                 },
+             error: function(){
+                 
+             }
+      });
+                // 分享请求 end     
+          })
+   </script>
+   </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+    <title>美片教师节</title>
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+    <link rel="stylesheet" type="text/css" href="./css/join.css">
+    
+</head>
+<body>
+<div class="layout">
+	 <div class="wraper">
+	      <div class="student_message">
+	    	<p></p>
+	    	<div class="stu_name"><span></span><input type="text" name="" value=""></div>
+        <div class="stu_phone" id="stu_phone"><span></span><input type="tel" name="" value=""></div>
+	    	<div class="stu_class"><span></span><input type="text" name="" value=""></div>
+	    	<div class="stu_wishes"><span></span>
+	    	<textarea>例：&#13;&#10;在您关注的目光之下，给予了我无尽的信心&#13;&#10;和勇气！您是我永远的老师！衷心祝您健康幸福！&#13;&#10;（限40字内）</textarea></div>
+	    	
+	    	
+	    	<button id="pay"></button>
+	    	
+	    </div>   
+	 </div>
+</div>
+
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/zepto.min.js"></script>
+<script type="text/javascript" src="./dist/pingpp.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="./js/underscore-min.js"></script>
+<script type="text/javascript">
+$(function(){
+   function preLoadImg(url) { 
+var img = new Image(); 
+img.src = url; 
+} 
+   preLoadImg("images/bg.png");
+  /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                     var url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+
+               var teacherId = request('teacherId');
+               
+             
+              /*--获取网页传递的参数 end--*/
+     var pay = $("#pay");
+     var studentName,className,benediction,amount,studentMobile,payChannel;
+ $(".stu_phone input").blur(function(){
+          var pho = $("#stu_phone input").val();
+          if(!(/^1[0-9]{10}$/.test(pho))){
+        $("#stu_phone input").val("请输入有效的11位手机号码"); 
+      }
+      })
+       $(".stu_phone input").focus(function(){
+         $("#stu_phone input").val("");
+       })
+
+     $(".stu_name input").blur(function(){
+        studentName = $(".stu_name input").val();
+         if(!studentName){
+           $(".stu_name input").val("请输入有效信息");
+        }
+        studentName = $(".stu_name input").val();
+        
+      });
+       $(".stu_name input").focus(function(){
+          $(".stu_name input").val("");
+       }) 
+      $(".stu_phone input").blur(function(){
+         studentMobile = $(".stu_phone input").val()
+      });
+      
+       $(".stu_class input").blur(function(){
+           className = $(".stu_class input").val();
+            if(!className){
+            $(".stu_class input").val("请输入有效信息");
+        }
+         className = $(".stu_class input").val();
+       
+      });
+       $(".stu_class input").focus(function(){
+          $(".stu_class input").val("");
+       })  
+       $(".stu_wishes textarea").focus(function(){
+            $(this).val("");
+      })
+
+      $(".stu_wishes textarea").blur(function(){
+        benediction = $(".stu_wishes textarea").val();
+         if(!benediction){
+           $(".stu_wishes textarea").val("在您关注的目光之下，给予了我无尽的信心和勇气！您是我永远的老师！衷心祝您健康幸福！");
+        };
+        benediction = $(".stu_wishes textarea").val();
+       
+      });
+      
+     
+       //判断是否是微信浏览器  begin
+               function isWeiXin(){ 
+                  var ua = window.navigator.userAgent.toLowerCase(); 
+                  if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+                   return true; 
+                  }else{ 
+                  return false; 
+               } 
+             };
+               if(isWeiXin()){ 
+                payChannel = "wx_pub";
+             }else{
+              payChannel = "wx_wap";
+             };
+               //判断是否是微信浏览器  end
+       pay.click(function(){  
+
+          $.ajax({
+              type: 'POST',
+              url: '/weixin/teacherday/old/donate',
+              data:{teacherId:teacherId,studentName:studentName,className:className,benediction:benediction,studentMobile:studentMobile},
+             dataType: 'json',
+             success: function(data){
+               
+                var studentId = data.data.studentId;
+                var tid = data.data.tid;
+             var  redirect="http://test.allxiu.com/h5/teacherday/pay.html?tid="+tid;
+         window.location.href ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa1f70fd6edc9b409&redirect_uri="+redirect+"&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect"; 
+              
+               
+           },
+             error: function(){
+                  
+             }
+      });
+           // 第一次请求完成
+    })
+ })
+   </script>
+</body>
+</html>

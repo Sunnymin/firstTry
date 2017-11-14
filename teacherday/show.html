@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+    <title>美片教师节</title>
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+    <link rel="stylesheet" type="text/css" href="./css/show.css">
+    
+</head>
+<body>
+<div class="layout">
+	 <div class="wraper">
+	    <div class="first"></div>
+	    <div class="second">
+        <div class="t_message">
+        </div>
+       
+         <div class="progress" id="progress">
+           <div class="fill" id="fill">
+             <span class='test'></span>
+           </div>
+         </div>
+        <div class="btn clearfix">
+            <button id="notice"></button>
+            <a href="http://mp.weixin.qq.com/s?__biz=MzIzOTA2NTQyMA==&mid=2652750929&idx=1&sn=c5b8a062cca6bbda951c4a1209babb35&chksm=f2c6a472c5b12d64efabdf98546faf586c479869c119226c37013469e13f2424302dfccffe57&scene=1&srcid=0908KVc23Uzc7K2XLuHnhiYD#rd"><button id="must"></button></a>
+        </div>
+      </div>
+      <div class="third">
+      </div>
+
+      <div class="forth"></div>	
+	 </div>
+  <div class="fix_bottom">
+       <a href="start.html" class="l"></a>
+      <a href="join.html" class="r">送老师美片</a>
+  </div>
+  <div class="cover" id="cover">
+     <div class="paper">
+       <button class="close" id="close"></button>
+     </div>
+
+   </div>
+   <div class="border_fix" id="border_fix"></div>
+</div>
+<script type="text/template" id="template1">
+           <p><%-model.schoolName%> <br>
+           <span><%-model.name%></span>老师已获得恩师基金<br> </p>
+           <p class="money"><%-model.currentAmount%>元</p>
+</script>
+<script type="text/template" id="template2">
+          <%_.each(list,function(iterm,i){%>
+          <div class="wish">
+             <div class="circle">
+                
+                <img src=<%-iterm.headImage%> 
+                       style="width:100%;height:100%">
+             </div>
+             <div class="wish_words">
+                 <span class="stu_name"> <%-iterm.studentName%>同学</span><br>
+                 <span><%-iterm.className%></span><br>
+                 <p><%-iterm.benediction%></p><br>
+            
+             </div>
+             <span class="money"><%-iterm.money%>元</span>
+        </div>
+         <%});%>
+</script>
+<script type="text/template" id="template3">
+     <a href="start.html" class="l"></a>
+     <a href=<%-"join.html?teacherId="+model.teacherId%> class="r">送<%-model.name%>老师美片</a>
+</script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/zepto.min.js"></script>
+<script type="text/javascript" src="./js/underscore-min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="./js/show.js"></script>
+
+</body>
+</html>

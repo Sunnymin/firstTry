@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title>活动详情</title>
+         <link rel="stylesheet" type="text/css" href="css/base.css">
+         <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+         <link rel="stylesheet" type="text/css" href="css/active.css">
+         <style type="text/css">
+           
+         </style>
+          <script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a3d23724d5078b24']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+   </head>
+   <body>
+   <div class="layout">
+      <div class="warn_cover">
+           <div id="test1">
+             <div class="swiper-container">
+               <div class="swiper-wrapper">
+                   <div class="swiper-slide">
+                      <a href="javascript:;">
+                      <img src="./images/step_1.png" alt="">
+                      </a>
+                  </div>
+                  <div class="swiper-slide">
+                     <a href="javascript:;">
+                     <img src="./images/step_2.png" alt="">
+                    </a>
+                  </div>
+                  <div class="swiper-slide"> 
+                     <a href="javascript:;">
+                     <img src="./images/step_3.png" alt="">
+                     </a>
+                  </div>
+                  <div class="swiper-slide">
+                     <a href="javascript:;">
+                     <img src="./images/step_4.png" alt="">
+                     </a>
+                  </div>
+                  <div class="swiper-slide">
+                      <a href="javascript:;">
+                      <img src="./images/step_5.png" alt="">
+                      </a>
+                   </div>
+               </div>
+             </div>
+            </div>
+            <div class="confirm">
+              <img src="images/confirm.png">
+            </div>
+       </div>
+   	  <div class="wraper_cover">
+       <div id="slider" class="view swipe ">
+        <ul class="swipe-wrap">
+        </ul>
+      </div>
+      </div>
+     
+   	  <!-- 摄影师简介 -->
+   	  <div class="wraper">
+   	  	<div class="introduce">
+   	  	 <div class="infor">
+   	  	 </div>
+        </div>
+       </div>
+     <!-- 服务简介 -->
+     <div class="wraper">
+   	  <div class="server">
+   	  	<!-- <div class="n1">
+   	  	 	<span></span>
+   	  	 	<p>1小时拍摄服务</p>
+   	  	 </div>
+   	  	 <div class="n2">
+   	  	 	<span></span>
+   	  	 	<p>8张精修</p>
+   	  	 </div>
+   	  	 <div class="n3">
+   	  	 	<span></span>
+   	  	 	<p>加片10元/张</p>
+   	  	 </div>
+   	  	 <div class="n4">
+   	  	 	<span></span>
+   	  	 	<p>不送底片</p>
+   	  	 </div> -->
+   	  </div>
+    </div>
+      <!-- 服务详情 -->
+    <div class="wraper">
+      <div class="xiangqing">
+      </div>
+     </div>
+      <!-- 服务发起人 -->
+    <div class="wraper">
+      <div class="start">
+      </div>
+     </div>
+      <!-- 加入活动 -->
+       <!-- <div class="join">￥99 加入活动</div> -->
+       <!-- 往期作品 -->
+       <div class="once">
+        <div class="wraper">
+         <p class="title">往期作品</p>
+        </div>
+          <div class="sort">
+          <div class="photoed"></div>
+            <!-- <div id="test">
+             <div class="swiper-container">
+               <div class="swiper-wrapper">
+               </div>
+             </div> -->
+            </div>
+          </div>
+   	   </div>
+      <!-- 摄影师评价  begin  -->
+       <!-- <div class="wraper">
+        <div class="assess">
+         <div class="assessment">
+           <div class="title">
+            
+           </div>
+            <div class="item">
+            </div>
+         </div>
+        </div>
+      </div> -->
+         <!-- 摄影师评价  end  -->
+     </div>
+     <div class="hold"></div>
+     <!-- 立即下载  begin-->
+       <div class="add">
+         <div class="add_l">
+           <!-- <span class="fs25">￥94</span><span class="fs14">￥99</span>
+           <p class="fs12">vip会员专享9.5折优惠</p> -->
+          <!--  <p class="p99"><span class="fs20">￥</span>99</p> -->
+         </div>
+         <div class="add_r">
+           <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.meipian.www" class="fs20">加入活动</a>
+         </div>
+       </div> 
+         <!-- 立即下载  end-->
+   </body>
+   <script type="text/template" id="template1">
+           <%_.each(imgs,function(item,i){%>
+            <li>
+                <a href="javascript:;">
+                    <img src=<%-"http://image.allxiu.com/"+item+"?imageView2/1/w/750/h/500"%>>
+                </a>
+            </li>
+             <%});%>
+  </script>
+    <script type="text/template" id="template2">
+          <p class="title"><%-model.serviceUserName%></p>
+           <%if(model.serviceUserLevelName=="铜级"){%>
+           <p class="color2"><span>
+                    <img src="./images/copper.png" >
+                    <%}else if(model.serviceUserLevelName=="银级"){%>
+                    <p class="color1"><span>
+                    <img src="./images/silver.png" >
+                    <%}else if(model.serviceUserLevelName=="钻级"){%>
+                    <p class="diamond"><span>
+                    <img src="./images/diamond.png" >
+                    <%}else if(model.serviceUserLevelName=="金级"){%>
+                    <p class="color"><span>
+                    <img src="./images/gold.png" >
+                    <%}%></span>&nbsp;<span><%-model.serviceUserLevelName%>摄影师</span></p>
+          <p class="fs15">拍摄过<%-model.serviceUserShotNum%>单 • <%-model.starNum%>个五星好评</p>
+          <img src=<%-"http://image.allxiu.com/"+model.serviceUserHeadUrl+"?imageView2/1/w/64/h/64"%>>
+          <div class="warn">
+                <img src="./images/warn.png">
+        </div>
+    </script>
+    <script type="text/template" id="template3">
+       <p class="title">活动详情</p>
+       <%if(model.orderType==21){%>
+        <!-- <p><span>•</span> 主题定为&nbsp;&nbsp;<span class="bold"><%-model.tabName%></span></p> -->
+        <span></span>
+        <p><span>•</span> 拍摄将在&nbsp;&nbsp;<span class="bold"><%-date%></span>&nbsp;&nbsp;<span class="bold"><%-model.shotWeek%></span>&nbsp;&nbsp;开始</p>
+        <span></span>
+        <p><span>•</span>&nbsp;&nbsp;地点位于&nbsp;&nbsp;<a href=<%-"map.html?placeName="+model.placeName+"&x="+model.latitude+"&y="+model.longitude%>><span class="bold"><%-model.placeName%></span></a></p>
+       <%}else{%> 
+       <!-- <p><span>•</span> 套系为&nbsp;&nbsp;<span class="bold"><%-model.tabName%></span></p> -->
+        <span></span>
+        <p><span>•</span> 拍摄时段为&nbsp;&nbsp;<span class="bold"><%-model.shotDate%></span></p>
+        <span></span>
+        <p><span>•</span>&nbsp;&nbsp;地点位于&nbsp;&nbsp;<span class="bold"><%-model.placeName%></span></p>
+        <%}%>
+    </script>
+    <script type="text/template" id="template4">
+      <p class="title1">活动发起人</p>
+        <p class="fs18"><%-model.userName%></p>
+        <p class="fs15">拍摄过<%-model.userShotNum%>次</p>
+        <img src=<%-"http://image.allxiu.com/"+model.userHeadUrl+"?imageView2/1/w/64/h/64"%>>
+    </script>
+    <script type="text/template" id="template5">
+      <!-- <p class="title">拍摄过的美片 · <%-album[0].orderCount%>套</p> -->
+      <div class="item_">
+      <%_.each(album,function(item,i){%>
+     <div class="image">
+            <a href=<%- "ever.html?orderId="+item.orderId%>>
+             <img class="img1" src=<%-"http://image.allxiu.com/"+item.firstImg+"?imageView2/1/w/700/h/470"%>>
+           </a>  
+             <p>· <%-item.cityName%>  <%-item.placeName%> ·</p>
+           </div>
+           <!-- 摄影师简介 begin-->
+           <div class="introduce">
+              <div class="intro_l">
+                <p><%-item.serviceUserName%></p>
+                <div class="level"><%if(item.serviceLevelName=="铜级"){%>
+                    <img src="./images/copper.png" ><span class="color2"><%-item.serviceLevelName%> • </span>
+                    <%}else if(item.serviceLevelName=="银级"){%>
+                    <img src="./images/silver.png" ><span class="color1"><%-item.serviceLevelName%> • </span>
+                    <%}else if(item.serviceLevelName=="钻级"){%>
+                    <img src="./images/diamond.png" ><span class="diamond"><%-item.serviceLevelName%> • </span>
+                    <%}else if(item.serviceLevelName=="金级"){%>
+                    <img src="./images/gold.png" ><span class="color"><%-item.serviceLevelName%> • </span>
+                    <%}%>
+                   <span class="addr"><%-item.serviceLevelIntegral%>积分</span></div>
+              </div>
+              <img src=<%-"http://image.allxiu.com/"+item.serviceUserHeadUrl+"?imageView2/1/w/80/h/80"%>>
+              <span class="line1"></span>
+           </div>
+         <!-- 摄影师简介 end -->
+          <!-- 摄影师评价  begin  -->
+       <div class="assess">
+         <div class="assessment">
+            <div class="item">
+              <div class="content">
+                <div class="assessmenter clearfix">
+                 <img src=<%-"http://image.allxiu.com/"+item.userHeadUrl+"?imageView2/1/w/64/h/64"%>>
+               <div>
+                     <span><%-item.userName%></span>
+                     <span>
+                     <%if(item.star==1){%>
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <%}else if(item.star==0){%>
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                    <%}else if(item.star==2){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                    <%}else if(item.star==3){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <%}else if(item.star==4){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                       <%}else if(item.star==5){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                    <%}%>
+                   </span>
+                   </div>
+                </div>
+                <p><%-item.content%></p>
+                <div class="p_tu">
+                 <%_.each(item.reviewsImg,function(item1,j){%>
+                  <a href=<%-"pic.html?url=http://image.allxiu.com/"+item1%>>
+                  <img src=<%-"http://image.allxiu.com/"+item1+"?imageView2/1/w/128/h/128"%>>
+                  </a>
+                 <%})%>
+                </div>
+                <%if(item.replyContent!=""){%>
+                <p><span class="color_blue">摄影师回复 :</span>“<%-item.replyContent%>”</p>
+                <%}%>
+              </div>
+            </div>    
+         </div>
+      </div>
+         <!-- 摄影师评价  end  -->
+         <%});%>
+         </div>
+     </script>
+    <script type="text/template" id="template8">
+       <%if(orderType==21){%>
+       <div class="n1">
+          <span></span>
+          <p>1小时</p>
+         </div>
+         <div class="n2">
+          <span></span>
+          <p>9张精修</p>
+         </div>
+         <div class="n3">
+          <span></span>
+          <p>加片10元/张</p>
+         </div>
+         <div class="n4">
+          <span></span>
+          <p>不送底片</p>
+         </div>
+        <%}else if(orderType==91||orderType==92||orderType==93||orderType==94){%>
+                          
+                       <div class='content1'>
+                         
+                            <div>
+                                <span class='time'><img src="images/hour1.png"></span>
+                                <span><%-xc[0]%></span>
+                             </div>
+                             <div class="n_2">
+                                <span class='count'><img src="images/fixed.png"></span>
+                                <span><%-xc[1].split("\n")[0]%></span><span><%-xc[1].split("\n")[1]%></span>
+                             </div>
+                             <div>
+                                <span class='truing'><img src="images/add.png"></span>
+                                <span><%-xc[2]%></span>
+                             </div>
+                             <div class="wedding">
+                                <span class='huzhuang'><img src="images/makeup.png"></span>
+                                 <span><%-xc[3]%></span>
+                             </div>
+                             <div class="wedding">
+                                <span class='clothes'><img src="images/cloth.png"></span>
+                                 <span><%-xc[4]%></span>
+                             </div>
+                            </div>
+                            <%}else if(orderType==55||orderType==56||orderType==57){%>
+                     <div class="n6">
+          <span></span>
+          <p><%-xc[0]%></p>
+         </div>
+         <div class="n5">
+          <span></span>
+          <p><%-xc[1]%></p>
+         </div>
+         <div class="n7">
+          <span></span>
+          <p><%-xc[2]%></p>
+         </div>
+         <div class="n8">
+          <span></span>
+          <p><%-xc[3]%></p>
+         </div>
+        <%}%>
+    </script>
+    <script type="text/template" id="template6">
+             <%_.each(model,function(item,i){%>
+              <div class="content">
+                  <div class="assessmenter clearfix">
+                     <img src=<%-"http://image.allxiu.com/"+item.userHeadUrl%>>
+                     <div>
+                        <span><%-item.userName%></span>
+                        <span><%if(item.star==1){%>
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                    <%}else if(item.star==2){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                    <%}else if(item.star==3){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <%}else if(item.star==4){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                       <%}else if(item.star==5){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                    <%}%></span>
+                     </div>
+                  </div>
+                 <p><%-item.content%></p>
+                 <div class="p_tu">
+                 <%_.each(item.orderReviewsImgs,function(item1,j){%>
+                 <a href=<%-"pic.html?url=http://image.allxiu.com/"+item1.reviewsImg%>>
+                  <img src=<%-"http://image.allxiu.com/"+item1.reviewsImg+"?imageView2/1/w/128/h/128"%>>
+                 <%})%>
+                 </a>
+                 </div>
+                 <%if(item.replyContent!=""){%>
+                 <p><span class="color_blue">摄影师回复 :</span> "<%-item.replyContent%>"</p>
+                 <%}%>
+                 <span><%-item.createTime%></span>
+             </div>
+             <%})%>
+             <!-- </div> -->
+   </script>
+   <script type="text/template" id="template7">
+   <%if(model.orderType==21){%>
+   <p class="p94">
+    <span class="fs25">￥<%-model.totalPrice%></span>
+    <!-- <span class="fs12">VIP会员专享9.5折优惠</span> -->
+    <span class="fs12">
+         <%if(model.festivalDiscount==0){%>
+          VIP会员专享9.5折优惠
+         <%}else{%>
+         周中特惠￥<%-model.festivalDiscount%>
+         <%}%>
+   
+    </span>
+    </p>
+    <%}else if(model.orderType==55){%>
+    <!-- <img src="images/p69.png" class="pic99"> -->
+    <span class="fs14">￥</span><span class="fs25"><%-model.totalPrice%></span>
+           <p class="discount"><span class="fs12 <%-model.discount==0&&model.vipDiscount!=0?a1:1%> <%-model.vipDiscount==0?hide:1%>">VIP优惠<%-model.vipDiscount%>元</span><span class="fs12 <%-model.discount!=0&&model.vipDiscount==0?a1:1%> <%-model.discount==0?hide:1%>">摄影师优惠<%-model.discount%>元</span></p>
+    <%}else if(model.orderType==56){%>
+    <img src="images/p69.png" class="pic99">
+    <span class="fs14">￥</span><span class="fs25"><%-model.totalPrice%></span>
+           <p class="discount"><span class="fs12 <%-model.discount==0&&model.vipDiscount!=0?a1:1%> <%-model.vipDiscount==0?hide:1%>">VIP优惠<%-model.vipDiscount%>元</span><span class="fs12 <%-model.discount!=0&&model.vipDiscount==0?a1:1%> <%-model.discount==0?hide:1%>">摄影师优惠<%-model.discount%>元</span></p>
+    <%}else if(model.orderType==57){%>
+    <img src="images/p99.png" class="pic99">
+    <span class="fs14">￥</span><span class="fs25"><%-model.totalPrice%></span>
+           <p class="discount"><span class="fs12 <%-model.discount==0&&model.vipDiscount!=0?a1:1%> <%-model.vipDiscount==0?hide:1%>">VIP优惠<%-model.vipDiscount%>元</span><span class="fs12 <%-model.discount!=0&&model.vipDiscount==0?a1:1%> <%-model.discount==0?hide:1%>">摄影师优惠<%-model.discount%>元</span></p>
+    <%}else if(model.orderType==91){%>
+    <img src="images/p999.png" class="pic99">
+    <span class="fs14">￥</span><span class="fs25"><%-model.totalPrice%></span>
+           <p class="discount"><span class="fs12 <%-model.discount==0&&model.vipDiscount!=0?a1:1%> <%-model.vipDiscount==0?hide:1%>">VIP优惠<%-model.vipDiscount%>元</span><span class="fs12 <%-model.discount!=0&&model.vipDiscount==0?a1:1%> <%-model.discount==0?hide:1%>">摄影师优惠<%-model.discount%>元</span></p>
+     <%}else if(model.orderType==92){%>
+    <img src="images/p1999.png" class="pic99">
+    <span class="fs14">￥</span><span class="fs25"><%-model.totalPrice%></span>
+           <p class="discount"><span class="fs12 <%-model.discount==0&&model.vipDiscount!=0?a1:1%> <%-model.vipDiscount==0?hide:1%>">VIP优惠<%-model.vipDiscount%>元</span><span class="fs12 <%-model.discount!=0&&model.vipDiscount==0?a1:1%> <%-model.discount==0?hide:1%>">摄影师优惠<%-model.discount%>元</span></p>
+     <%}else if(model.orderType==93){%>
+    <img src="images/p2999.png" class="pic99">
+    <span class="fs14">￥</span><span class="fs25"><%-model.totalPrice%></span>
+           <p class="discount"><span class="fs12 <%-model.discount==0&&model.vipDiscount!=0?a1:1%> <%-model.vipDiscount==0?hide:1%>">VIP优惠<%-model.vipDiscount%>元</span><span class="fs12 <%-model.discount!=0&&model.vipDiscount==0?a1:1%> <%-model.discount==0?hide:1%>">摄影师优惠<%-model.discount%>元</span></p>
+     <%}else if(model.orderType==94){%>
+    <img src="images/p3999.png" class="pic99">
+    <span class="fs14">￥</span><span class="fs25"><%-model.totalPrice%></span>
+          <p class="discount"><span class="fs12 <%-model.discount==0&&model.vipDiscount!=0?a1:1%> <%-model.vipDiscount==0?hide:1%>">VIP优惠<%-model.vipDiscount%>元</span><span class="fs12 <%-model.discount!=0&&model.vipDiscount==0?a1:1%> <%-model.discount==0?hide:1%>">摄影师优惠<%-model.discount%>元</span></p>
+     <%}%>
+   </script>
+   <script type="text/javascript" src="js/common.js"></script>
+   <script type="text/javascript" src="js/zepto.js"></script>
+   <script type="text/javascript" src="js/swipe.js"></script>
+   <script type="text/javascript" src="js/index.js"></script>
+   <script type="text/javascript" src="js/swiper.min.js"></script>
+   <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+   <script type="text/javascript">
+   $(document).ready(function(){
+    var page=1;var num,url,title,desc,img,serviceUserId;
+            /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                      url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+              var mjActivityId = request('mjActivityId');
+                /*--获取网页传递的参数 end--*/
+                 $.ajax({
+                         type: 'POST',
+                         url: '/'+test+'/activity/detail',
+                         data: { activityId:mjActivityId},
+                         dataType:'json',
+                         success: function(data){
+                              console.log(data)
+                               var nn=data.data.shotDate.split(".");
+                               var date=nn[1]+"月"+nn[2]+"日";
+                               var result=data.data;
+                               var imgs=data.data.imgs;
+                               var discount= result.discount;
+                               var orderType=data.data.orderType;
+                               var xc=result.detailServiceContent.split("|");
+                               var xc_=xc[1].split("\r\n");
+                               var hide="hide";var a1="a1";var b1="b1";
+                             
+                               serviceUserId=result.serviceUserId;
+                               var template1 = _.template($('#template1').html());
+                              $(".swipe-wrap").html(template1({imgs:imgs}));
+                              if(imgs.length==0){
+                                   $(".view").html('<img src="./images/homepage.png" alt="">');
+                              }else{
+                                   var template1 = _.template($('#template1').html());
+                                   imgs.push(imgs[0]);
+                                   $(".swipe-wrap").html(template1({imgs:imgs}));
+                                  
+                                   var mySwipe = Swipe(document.getElementById('slider'),{
+                                   auto:2700,
+                                   });
+                               };
+
+                  if(result.mjActivityType===1){
+                      title=result.serviceUserName+"豁出去99元拍"+result.tabName;
+                      desc=result.cityName+'最好的摄影师'+result.serviceUserName+'发起了"'+result.placeName+'"99元拍'+result.tabName+'大优惠活动！'
+                     }else{
+                      title="邀请你来拍99元写真";
+                       desc=result.userName+'发起了"'+result.placeName+'"99元拍'+result.tabName+'大优惠活动，1个小时8张精修。快来参加吧！';
+                              }
+                 
+                              var template2 = _.template($('#template2').html());
+                              $(".infor").html(template2({model:result}));
+                            
+                            $(".warn").click(function(){
+                                $(".warn_cover").show();
+                                 var swiper1 = new Swiper('#test1 .swiper-container', {
+                                   pagination: '.swiper-pagination',
+                                   paginationClickable: true,
+                                   spaceBetween: 20,
+                                 });
+                              
+                               $(".warn_cover").on('touchmove',function(event) { event.preventDefault(); }, false); 
+                            });
+                            $(".confirm img").click(function(){
+                              $(".warn_cover").hide();
+                            });
+                          
+                              var template3 = _.template($('#template3').html());
+                              $(".xiangqing").html(template3({model:result,date:date}));
+                              
+                              var template4= _.template($('#template4').html());
+                              $(".start").html(template4({model:result}));
+                              
+                              var type=result.mjActivityType;
+                              
+                              if(type==1){
+                                $(".start").hide();
+                                img="http://image.allxiu.com/"+result.serviceUserHeadUrl+"?imageView2/1/w/128/h/128";
+                              }else{
+                                 var img="http://image.allxiu.com/"+result.userHeadUrl+"?imageView2/1/w/128/h/128";
+                              };
+
+                               var code=data.code;
+                              var album=result.album;
+                              if(code==300 || album.length==0){
+                                $(".once").hide();
+                              }else{
+                                var template5= _.template($('#template5').html())
+                              $(".photoed").html(template5({album:album}));
+                             
+                              };
+
+                             var template7= _.template($('#template7').html())
+                              $(".add_l").html(template7({model:result,hide:hide,a1:a1,b1:b1}));
+                              
+                              var template8= _.template($('#template8').html())
+                              $(".server").html(template8({orderType:orderType,infor:result,xc:xc}));
+                             
+                $(window).scroll(function(){
+  var height=document.body.scrollHeight;
+  
+if(document.body.scrollTop+document.documentElement.clientHeight>=height){
+        page ++;
+        console.log(page)
+        $.ajax({
+             type: 'POST',
+             url: '/'+test+'album/getSuixinpaiAlbumByUserId',
+             data: { userId:serviceUserId,page:page,userType:1},
+             dataType: 'json',
+             success: function(data){
+              console.log(data)
+              var album=data.data;
+                 
+                var template5 = _.template($('#template5').html());
+                var mmm = document.createElement("div");
+                $(mmm).addClass("sort1");
+               if(data.code==200){
+                $(".photoed").append(mmm); 
+                $(mmm).html(template5({album:album}));
+               }
+              if(data.code==300){
+                  var div = document.createElement("div");
+                   $(div).addClass("more");
+                   $(".assessment").append(div);
+                   $(".more").html("到我底线了")
+                  page=NaN;
+                }
+                 
+             },
+             error:function(){
+              console.log(222)
+             }
+                 });
+
+}
+});
+                // 加载更多 
+                 // 分享请求  begin 
+                $.ajax({
+              type: 'POST',
+              url: '/'+test+'/wxconfig/getConfig',
+              data:{url:url},
+             dataType: 'json',
+             success: function(data){
+                
+                var datas = data.data;
+                
+wx.config({
+    debug: false, 
+    appId: datas.appId, 
+    timestamp: datas.timestamp, 
+    nonceStr: datas.nonceStr, 
+    signature: datas.signature,
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ'] 
+});
+
+wx.ready(function(){
+    // 获取“分享到朋友圈”
+    wx.onMenuShareTimeline({
+        title:title, 
+        desc: desc,
+        link:location.href,
+        imgUrl:img, 
+    });
+    // 获取“分享给朋友”
+    wx.onMenuShareAppMessage({
+        title: title,
+        desc: desc, 
+        link:location.href,
+        imgUrl:img, 
+        type: 'link', 
+    });
+    // “分享到QQ”
+     wx.onMenuShareQQ({
+       title: title, 
+        desc: desc,
+        link:location.href,
+        imgUrl: img,
+        type: 'link', 
+      
+    });
+});
+wx.error(function(res){
+   console.log(res)
+    
+});
+
+
+                 },
+             error: function(){
+                 
+             }
+      });
+                // 分享请求 end 
+                            }
+                        });
+                 
+            })
+    
+   </script>
+</html>

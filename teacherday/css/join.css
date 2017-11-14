@@ -1,0 +1,103 @@
+.layout{
+	 width:100%;
+	 max-width: 750px;
+	 min-width: 300px;
+	 height:41.6875rem;
+	 background: url(../images/bg.png) center center no-repeat;
+	 background-size: 100%;
+	 margin:0 auto;
+	 padding:1.9375rem 1.9375rem auto 1.9375rem;
+}
+.wraper{
+	 width:19.625rem;
+	 margin:0 auto;
+	 border:1px solid rgba(255,255,255,0);
+
+}
+.student_message{
+	 width:19.625rem;
+	 margin:1.5rem auto auto;
+}
+.student_message p:first-child{
+ 	 width:10.5625rem;
+ 	 height:1.0625rem;
+ 	 background: url(../images/student.png) center center no-repeat;
+ 	 background-size:100%;
+ }
+input{
+	 background: url(../images/input.png) center center no-repeat;
+	 background-size:100%;
+	 color:#C4C4C4;
+	 font-size: 0.9375rem;
+}
+
+.student_message div{
+	 height:2.75rem;
+	 line-height:2.75rem;
+	 width:100%;
+	 margin-top:0.3125rem;
+     border-bottom: 2px solid #fff;
+     border-image: url(../images/line.png) 0 2 2 2 round ;
+}
+.student_message .stu_name span{
+	 display: inline-block;
+	 width:4.375rem;
+	 height:1.0625rem;
+	 background: url(../images/stu_name.png) center center no-repeat;
+	 background-size:100%;
+}
+.student_message .stu_phone span{
+	 display: inline-block;
+	 width:5.6875rem;
+	 height:1.0625rem;
+	 background: url(../images/stu_phone.png) center center no-repeat;
+	 background-size:100%;
+}
+.student_message .stu_class span{
+	 display: inline-block;
+	 width:4.375rem;
+	 height:1.0625rem;
+	 background: url(../images/stu_class.png) center center no-repeat;
+	 background-size:100%;
+}
+.student_message .stu_wishes span{
+	 display: inline-block;
+	 width:7.3125rem;
+	 height:1rem;
+	 background: url(../images/stu_wishes.png) center center no-repeat;
+	 background-size:100%;
+}
+ .student_message span{
+ 	 margin-right:0.6875rem;
+ }
+ .student_message input:nth-child(2){
+ 	 width:10.75rem;
+ }
+ .student_message .stu_wishes{
+ 	 height:8.125rem;
+ }
+ textarea{
+ 	 width:20.6875rem;
+ 	 height:4.375rem;
+ 	 border:none;
+ 	 background: url(../images/input.png) center center no-repeat;
+	 background-size:100%;
+	 color:#C4C4C4;
+	 font-size: 0.9375rem;
+}
+ .student_message .stu_money span{
+ 	 display: inline-block;
+	 width:3.875rem;
+	 height:0.9375rem;
+	 background: url(../images/money.png) center center no-repeat;
+	 background-size:100%;
+ }
+ .student_message button{
+     display: block;
+ 	 width:8.3125rem;
+ 	 height:1.875rem;
+ 	 margin:1.875rem auto;
+ 	 background: url(../images/offer.png) center center no-repeat;
+	 background-size:100%;
+ }	    	
+

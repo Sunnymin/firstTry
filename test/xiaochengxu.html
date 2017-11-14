@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title></title>
+   </head>
+   <body>
+   <script type="text/javascript">
+   	// 条件渲染
+
+   	// wx:if
+   	//在框架中，我们用wx:if="{{condition}}"来判断是否需要渲染该
+   	// 代码块；
+   	// <view wx:if="{{condition}}">true</view>
+   	// 也可以用wx:elif和wx:else来添加一个else块：
+   	// <view wx:if="{{length>5}}"> 1 </view>
+   	//<view wx:elif="{{length > 2}}"> 2 </view>
+   	// <view wx:else> 3 </view>
+
+    // block wx:if
+    // 因为wx:if是一个控制属性，需要将它添加到一个标签上，但是如果我们想一次惺判断多个组件标签，我们可以使用一个<block/> 标签将多个组件褒奖起来，并在上边使用wx:if控制属性
+    // <block wx:if="{{true}}">
+    //    <view> view1 </view>
+    //    <view> view2 </view>
+    // <block/>
+    //注意：<block/>并不是一个组件，它仅仅是一个包装元素，不会在页面何总做任何渲染，只接受控制属性。
+
+    //wx:if vs hidden
+    //因为wx:if 之中的模板也可能包含数据绑定，所有当wx:if的条件值切换时，框架有一个局部渲染的过程，因为它会确保条件块在切换时销毁或重新渲染。
+    //同时wx:if也是惰性的，如果在初始渲染条件为false，框架什么也不做，在条件第一次变成真的时候才开始局部渲染。
+    //相比之下，hidden 就简单的多，组件始终会被渲染，只是简单的控制现实与隐藏。
+    //一般来说，wx:if 有更高的切换消耗而hidden 有更高的初始渲染消耗。因此，如果需要频繁切换的情景下，用hidden 更好，如果在运行时条件不大可能改变则wx:if较好。
+
+    //列表渲染
+    //wx:for
+    //在组件上使用wx:for控制属性绑定一个数组，即可使用数组中各项的数据重复渲染该组件。
+    //默认数组的当前项的下标变量名默认为index,数组当前项的变量名默认为item
+    //<view wx:for="{{array}}">
+    //   {{index}}:{{item.message}}
+    // </view>
+
+    //Page({
+    	// data:{
+    	// 	array:[{
+    	// 		message:"foo",
+    	// 	},{
+    	// 		message:"bar"
+    	// 	}]
+    	// }
+   // })
+   //使用wx:for-item 可以指定数组当前元素的变量名，
+   //使用wx:for-index 可以指定数组当前下标的变量名：
+   
+   //<view wx:for="{{array}}" wx:for-index="idx" wx:for-item="itemName">
+   //    {{idx}}:{{itemName.message}}
+   //</view>
+
+   //wx:for 也可以嵌套，下边是一个九九乘法表
+   //<view wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:for-item="i">
+   // <view wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:for-item="j">
+   //   <view wx:if="{{i<=j}}">
+   //      {{i}} * {{j}} = {{i * j}}
+   //   </view>
+   //  </view>
+   //</view>
+
+   //block wx:for
+   //类似block wx:if，也可以将wx:for用在 <block/>标签上，以渲染一个包含多节点的结构块。
+   // <block wx:for="{{[1,2,3]}}">
+       //      <view> {{index}}:</view>
+       //      <view> {{item}} </view>
+       // </block>
+
+    //wx:key 
+    //如果列表中项目的位置会动态改变或者有新的项目添加到列表中，并且希望列表中的项目保持自己的特征和状态（如<input/>中的输入内容，,<switch/>的选中状态），需要使用wx:key来指定列表中项目的唯一的标示符
+    //wx:key 的值以两种形式提供
+    //1. 字符串，代表在for循环的array中item的某个property ,该property的值需要是列表中唯一的字符串或者数字，且不能动态改变
+    //2. 保留关键字*this 代表在for循环中的item本身，这种表示需要item本身是一个唯一的字符串或者数字，如：
+    //当数据改变触发渲染层重新渲染的时候，会校正带有key的组件，框架会确保他们被重新排列，而不是重新创建，以确保使组件保持自身的状态，别且提高列表渲染时的效率。
+    
+    //如果不提供wx:key,会报一个warning ,如果明确知道该列表是静态，或者不必关注其顺序，可以选择忽略。
+
+    //示例代码
+    //<switch wx:for="{{objectArray}}" wx:key="unique" style="display:block"> {{item.id}} </switch> 
+    //<button bindtap="switch"> Switch </button>
+    //<button bindtap="addToFront"> Add to the front </button>
+
+    //<switch wx:for="{{numberArray}}" wx:key="this" style="display:block"> {{item}} </switch>
+    //<button bindtap="addNumberToFront"> Add to the front </button>
+
+  //   Page({
+  //   	data:{
+  //   		objectArray:[
+  //   		{id:5,unique:'unique_5'},
+  //   		{id:4,unique:'unique_4'},
+  //   		{id:3,unique:'unique_3'},
+  //   		{id:2,unique:'unique_2'},
+  //   		{id:1,unique:'unique_1'},
+  //   		{id:0,unique:'unique_0'},
+  //   		],
+  //       numberArray:[1,2,3,4]
+  //   	},
+  //   	switch:function(e){
+  //   		const length = this.data.objectArray.length
+  //   		for(let i=0;i<length;++i){
+  //   			const x=Math.floor(Math.random()*length)
+  //   			const y=Math.floor(Math.random()*length)
+  //   			const temp=this.data.objectArray[x]
+  //   			this.data.objectArray[x] = this.data.objectArray[y]
+  //   			this.setData({
+  //   				objectArray:this.data.objectArray
+  //   			})
+  //   		},
+  //   	addToFront:function(e){
+  //   		const length = this.data.objectArray.length
+  //   		this.data.objectArray=[{
+  //   			id:length,
+  //   			unique:'unique_'+length
+  //   		}].concat(this.data..objectArray)
+  //   		this.setData({
+  //   			objectArray:this.data.objectArray
+  //   		})
+  //   	},
+  //   	addNumberToFront: function(e){
+  //   this.data.numberArray = [ this.data.numberArray.length + 1 ].concat(this.data.numberArray)
+  //   this.setData({
+  //     numberArray: this.data.numberArray
+  //   })
+  // }
+  //  })
+
+  //组件
+  //swiper 滑块视图容器
+  //属性名             类型    默认值    说明
+  //indicator-dots     Boolean   false   是否显示面板指示点
+  //autoplay           Boolean   false   是否自动切换
+  //current            Number    0        当前所在页面的index
+  //interval           Number    5000     自动切换时间间隔
+  //duration           Number    1000     滑动动画时长
+  //bindchange       EventHandle      current改变时会触发change事件，event.detail={current:current}
+
+//注意：其中只可放置<swiper/>组件，其他节点会被自动删除
+
+//swiper-item 仅可放置在</swiper>组件中，宽高自动设为100%
+//<swiper indicator-dots="{{indicatorDots}}"
+ //  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  //  <block wx:for="{{imgUrls}}">
+  //     <swiper-item>
+   //        <image src="{{item}}"  class="slide-image" width="355" height="150" />
+    //    </swiper-item>
+    // </block>
+    //</swiper>
+    // <button bindtap="changeIndicatorDots"> indicator-dots </button>
+    //<button bindtap="changeAutoplay"> autoplay </button>
+    // <slider bindchange="intervalChange" show-value min="10000"/>duration
+
+    // Page({
+    // 	data:{
+    // 		imgUrls:[
+    // 		    'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+    //             'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+    //            'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    // 		],
+    // 		indicatorDots:false,
+    // 		autoplay:false,
+    // 		interval:5000,
+    // 		duration:1000
+    // 	},
+    // 	changeIndicatorDots:function(e){
+    // 		this.setData({
+    // 			indicatorDots:!this.data.indicatorDots
+    // 		})
+    // 	},intervalChange:function(e){
+    // 		this.setData({
+    // 			interval:e.detail.value
+    // 		})
+    // 	},
+    // 	durationChange:function(e){
+    // 		this.setData({
+    // 			duration:e.detail.value
+    // 		})
+    // 	}
+    // })
+
+    //wx.chooseImage(object)  
+    //从本地相册选择图片或使用相机拍照
+    //object参数说明
+    //count  Number  最多可以选择的图片张数，默认是9
+    //sizeType  stringArray  original原图,compressed压缩图，默认二者都有
+    //sourceType  stringArray album从相册选图，camera使用相机，默认二者都有
+    //success  成功则返回图片的本地文件路径列表tempFilePaths
+    //fail  接口调用失败的回调函数
+    //注意：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需要主动调用wx.saveFile,在小程序下次启动时才能访问得到。
+    //示例代码
+    // wx.chooseImage({
+      // count:1,
+      // sizeType:['original','compressed'],
+      // sourceType:['album','camera'],
+      // success:function(){
+
+      // }
+    // })
+    //<view  class="section"
+    
+    //</view>
+    APP({
+      onlaunch:function(){
+        wx.login({
+          success:function(res){
+            if(res.code){
+              wx.request({
+                url:'https://test.com.onlogin',
+                data:{
+                  code:res.code
+                }
+              })
+            }
+          }
+        })
+      }
+    })
+   </script>
+   </body>
+</html>

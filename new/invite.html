@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title></title>
+         <link rel="stylesheet" type="text/css" href="css/base.css">
+         <link rel="stylesheet" type="text/css" href="css/invite.css">
+         <style type="text/css">
+         	.cover1{
+         		display: none;
+         	}
+         </style>
+   </head>
+   <body>
+   <div class="layout padding">
+   	 <div class="inviter">
+   	 	<!-- <img src="images/logo.png">
+   	 	<p>美丽的小哞送您美片VIP9.5折会员</p> -->
+   	 </div>
+   	<div class="item"> <img src="images/invite1.png"></div>
+   	<div><input  class="tel" type="tel" name="" value="输入手机号" maxlength="11"><input class="button1 color" type="button" name="" value="获取验证码" id="btn"></div>
+   	<div><input class="check" type="tel" name="" value="输入验证码"><input class="button2" type="button" name="" value="立即领取"></div>
+    <div class="cover1">
+   	  <div class="cover">
+   		<p class="title">绑定成功</p>
+   		<p class="content">下载美片APP免密登录后就能享受 <br>	
+            VIP9.5折优惠啦</p>
+         <p class="load"><a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.meipian.www">赶快去下载</a></p>
+      </div>
+   	</div>
+   </div>
+   <div class="download">
+   		<div class="fl">
+        <div class="fl"><img src="images/logo.png"></div>
+        <div class="fr">
+          <p>美片 · 约拍神器</p>
+          <p>口碑爆表的摄影平台</p>
+        </div>
+      </div>
+      <div class="fr"><a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.meipian.www">下载</a></div>
+   	</div>
+   	<script type="text/template" id="template1">
+   		<img src=<%-"http://image.allxiu.com/"+avatarUrl+"?imageView2/1/w/150/h/150"%>>
+   	 	<p><%-nickName%>送您美片VIP会员</p>
+   	</script>
+   	<script type="text/javascript" src="js/common.js"></script>
+   <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+   <script type="text/javascript">
+    $(document).ready(function(){
+    	var phone,verificationCode;
+    	 /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                      url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+              var chiefUserId = request('userId');
+              var avatarUrl = request('avatarUrl');
+              var nickName=request('nickName');
+              nickName=decodeURI(nickName);
+              console.log(chiefUserId,avatarUrl,nickName)
+                /*--获取网页传递的参数 end--*/
+              var template1 = _.template($('#template1').html());
+              $(".inviter").html(template1({avatarUrl:avatarUrl,nickName:nickName}));
+                var tel=$(".tel");
+        tel.focus(function(){
+        	$(".tel").val("");
+        });
+        tel.blur(function(){
+        	phone=tel.val()+'';
+     if(!(/^1[0-9]{10}$/.test(phone))){
+        tel.val("请输入有效的11位手机号码"); 
+      };
+      var btn=document.getElementById("btn");
+	 var countdown=60; 
+function settime(val) { 
+if (countdown == 0) { 
+val.setAttribute("disabled", false); 
+val.value="获取验证码"; 
+$(val).removeClass("color1").addClass("color")
+} else { 
+val.setAttribute("disabled", true); 
+$(val).removeClass("color").addClass("color1")
+val.value=countdown + "s"; 
+countdown--; 
+} 
+setTimeout(function() { 
+settime(val) 
+},1000)
+}
+        	 $(".button1").click(function(){
+        	 	
+
+                 $.ajax({
+                         type: 'POST',
+                         url: '/'+test+'/user/sendCaptcha',
+                         data: { phoneNumber:phone,voice:false},
+                         dataType:'json',
+                         success: function(data){
+                              console.log(data);
+                            if(data.code==200){
+                            	settime(btn)
+                            } 
+                          }
+                        });
+        });
+        });
+        $(".check").focus(function(){
+        	$(".check").val("");
+        });
+       
+        $(".check").blur(function(){
+            verificationCode=$(".check").val();
+        });
+        $(".button2").click(function(){
+        	
+        	if(phone&&chiefUserId&&verificationCode){
+             	
+             	$.ajax({
+                         type: 'POST',
+                         url: '/'+test+'/user/appointmentVip',
+                         data: { phone:phone,chiefUserId:chiefUserId,verificationCode:verificationCode},
+                         dataType:'json',
+                         success: function(data){
+                              console.log(data);
+                              if(data.code==200){
+                              	$(".cover1").show();
+                              }else{
+                              	alert(data.message)
+                              }
+                          }
+                        });
+             }else{
+               console.log(111)
+             }
+        })
+         // 分享请求  begin 
+                $.ajax({
+              type: 'POST',
+              url: '/'+test+'/wxconfig/getConfig',
+              data:{url:url},
+             dataType: 'json',
+             success: function(data){
+             	var datas = data.data;
+                var title="美片限量版永久VIP会员";
+             var desc="送你一枚珍贵的美片限量版VIP会员。永久享有最高折扣优惠！因为我喜欢你，所以，拿走不谢~";
+                var img="http://app.allxiu.com/h5/new/images/logo.png";
+                
+wx.config({
+    debug: false, 
+    appId: datas.appId, 
+    timestamp: datas.timestamp, 
+    nonceStr: datas.nonceStr, 
+    signature: datas.signature,
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ'] 
+});
+
+wx.ready(function(){
+    // 获取“分享到朋友圈”
+    wx.onMenuShareTimeline({
+        title:title, 
+        desc: desc,
+        link:location.href,
+        imgUrl:img, 
+    });
+    // 获取“分享给朋友”
+    wx.onMenuShareAppMessage({
+        title: title,
+        desc: desc, 
+        link:location.href,
+        imgUrl:img, 
+        type: 'link', 
+    });
+    // “分享到QQ”
+     wx.onMenuShareQQ({
+       title: title, 
+        desc: desc,
+        link:location.href,
+        imgUrl: img,
+        type: 'link', 
+      
+    });
+});
+wx.error(function(res){
+   console.log(res)
+    
+});
+
+
+                 },
+             error: function(){
+                 
+             }
+      });
+                // 分享请求 end      
+                
+    })
+   </script>
+
+   </body>
+</html>

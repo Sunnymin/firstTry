@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title></title>
+         <link rel="stylesheet" type="text/css" href="css/base.css">
+         <link rel="stylesheet" type="text/css" href="css/assessment.css">
+   </head>
+   <body>
+   <div class="layout">
+    <div class="assess">
+         <div class="assessment">
+          
+            <div class="sort">
+              
+            </div>
+
+         </div>
+      </div>
+    </div>
+   </body>
+   <script type="text/template" id="template4">
+        
+          
+             <%_.each(model,function(item,i){%>
+              <div class="content">
+                  <div class="assessmenter clearfix">
+                     <img src=<%-"http://image.allxiu.com/"+item.userHeadUrl%>>
+                     <div>
+                        <span><%-item.userName%></span>&nbsp;<span><%-item.createTime%></span>
+                        <span class="block"><%if(item.star==1){%>
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                    <%}else if(item.star==2){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                    <%}else if(item.star==3){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                      <img src="images/empty.png">
+                      <%}else if(item.star==4){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/empty.png">
+                       <%}else if(item.star==5){%>
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                      <img src="images/full.png">
+                    <%}%></span>
+
+                     </div>
+                  </div>
+                 <p><%-item.content%></p>
+                 <div class="p_tu">
+                 <%_.each(item.orderReviewsImgs,function(item1,j){%>
+                 <a href=<%-"pic.html?url=http://image.allxiu.com/"+item1.reviewsImg%>>
+                  <img src=<%-"http://image.allxiu.com/"+item1.reviewsImg+"?imageView2/1/w/128/h/128"%>>
+                 <%})%>
+                 </a>
+                 </div>
+                 <%if(item.replyContent!=""){%>
+                 <p><span class="color_blue">摄影师回复 :</span> "<%-item.replyContent%>"</p>
+                 <%}%>
+                 <!-- <span><%-item.createTime%></span> -->
+             </div>
+             <%})%>
+          
+
+   </script>
+   <script type="text/javascript" src="js/common.js"></script>
+   <script type="text/javascript" src="js/zepto.js"></script>
+   <script type="text/javascript" src="js/underscore-min.js"></script>
+   <script type="text/javascript">
+   $(function(){
+     var serviceUserId;var page=1;var num;
+    /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                      var url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+              serviceUserId = request('serviceUserId');
+                /*--获取网页传递的参数 end--*/
+                $.ajax({
+             type: 'POST',
+             url: '/'+test+'/orderReviews/getServiceUserOrderReviews',
+             data: { serviceUserId:serviceUserId,page:page,pageSize:10},
+             dataType: 'json',
+             success: function(data){
+                console.log(data);
+                var result=data.data.orderReviews;
+                
+                var template4 = _.template($('#template4').html())
+                $(".sort").html(template4({model:result}));
+                
+                num=Math.ceil(result[0].total/10);
+                if(page<num){
+                  
+               var div = document.createElement("div");
+                   $(div).addClass("more");
+                   $(".assessment").append(div);
+                  $(".more").html("正在加载")
+             }else if(page==num){
+                   var div = document.createElement("div");
+                   $(div).addClass("more");
+                   $(".assessment").append(div);
+                   $(".more").html("到我底线了");
+                  };
+             }
+              });
+   $(window).scroll(function(){
+     if(document.body.scrollTop+document.documentElement.clientHeight>=document.body.scrollHeight){
+         page ++;
+         $.ajax({
+             type: 'POST',
+             url: '/'+test+'/orderReviews/getServiceUserOrderReviews',
+             data: { serviceUserId:serviceUserId,page:page,pageSize:10},
+             dataType: 'json',
+             success: function(data){
+                var result=data.data.orderReviews;
+                 
+                var template4 = _.template($('#template4').html());
+                var mmm = document.createElement("div");
+                $(mmm).addClass("sort1");
+                
+                $(".sort").append(mmm); 
+                $(mmm).html(template4({model:result}));
+             
+              if(data.lastPage&(page==num)){
+                 $(".more").html("到我底线了");
+                }
+              },
+             error:function(){
+              console.log(222)
+             }
+                 });
+   }
+});
+                // 加载更多 
+   })
+   </script>
+</html>

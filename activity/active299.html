@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title>活动详情</title>
+         <link rel="stylesheet" type="text/css" href="css/base.css">
+         <link rel="stylesheet" type="text/css" href="css/active299.css">
+   </head>
+   <body>
+   <div class="layout">
+   	  <!-- 摄影师信息 begin-->
+   	    <div class="infor">
+   	       <!--  <img src="image/n3.jpg" style="width:100%;height:100%">
+   	    	<div class="mes">
+   	    		<p>个人</p>
+   	    	    <p>“专注复古画风的人像照”</p>
+   	    	    <p>8月31日</p>
+   	    	    <p>小时光多肉植物主题咖啡店</p>
+   	    	</div>
+   	    	<div class="portrait">
+   	    		<img src="image/logo.png">
+   	    		<span>傲秀隐者</span>
+   	    	</div> -->
+   	    </div>
+   	  <!-- 摄影师信息 end-->
+   	  <div class="server">
+   	  	 <div class="n1">
+   	  	 	<span></span>
+   	  	 	<p>1小时拍摄服务</p>
+   	  	 </div>
+   	  	 <div class="n2">
+   	  	 	<span></span>
+   	  	 	<p>8张精修</p>
+   	  	 </div>
+   	  	 <div class="n3">
+   	  	 	<span></span>
+   	  	 	<p>加片10元/张</p>
+   	  	 </div>
+   	  	 <div class="n4">
+   	  	 	<span></span>
+   	  	 	<p>不送底片</p>
+   	  	 </div>
+   	  </div>
+   	  <!-- 报名 begin-->
+   	  <div class="book">
+   	  	<div class="book_1">
+   	  		 <p>报名人数</p>
+   	  	     <div class="book_2">
+   	  		    <!-- <img src="image/logo.png">
+                <img src="image/logo.png">
+                <img src="image/logo.png"> -->
+   	  	    </div>
+   	  	</div>
+   	  </div>
+   	  <!-- 服务评价 -->
+   	  <div class="assess">
+   	  	 <div class="assessment">
+   	  	 	<!-- <div class="title">
+   	  	 	  <p>美粉评价(5)</p>
+   	  	 	  <a href="assessment.html?"><span>查看更多</span></a>
+   	  	    </div>
+   	  	    <div class="sort sort_1">
+   	  	    	<div class="content">
+   	  	    		<div class="assessmenter clearfix">
+   	  	    		   <img src="image/logo.png">
+   	  	    		   <div>
+   	  	    			 <span>我是一只可爱的小妖精</span>
+   	  	    			 <span>★★★★☆</span>
+   	  	    		   </div>
+   	  	    		</div>
+   	  	    		<p>活不错，就是时间短了点，没过瘾，给三分吧！如果还想我点你那我下次要给我拍的更漂亮一些噢！！</p>
+   	  	    		<span>2016.7.25  17:15:30</span>
+   	  	    	</div>
+
+   	  	    	<div class="content">
+   	  	    		<div class="assessmenter clearfix">
+   	  	    		   <img src="image/logo.png">
+   	  	    		   <div>
+   	  	    			 <span>我是一只可爱的小妖精</span>
+   	  	    			 <span>★★★★☆</span>
+   	  	    		   </div>
+   	  	    		</div>
+   	  	    		<p>活不错，就是时间短了点，没过瘾，给三分吧！如果还想我点你那我下次要给我拍的更漂亮一些噢！！</p>
+   	  	    		<span>2016.7.25  17:15:30</span>
+   	  	    	</div>
+
+   	  	    	<div class="content">
+   	  	    		<div class="assessmenter clearfix">
+   	  	    		   <img src="image/logo.png">
+   	  	    		   <div>
+   	  	    			 <span>我是一只可爱的小妖精</span>
+   	  	    			 <span>★★★★☆</span>
+   	  	    		   </div>
+   	  	    		</div>
+   	  	    		<p></p>
+   	  	    		<span>2016.7.25  17:15:30</span>
+   	  	    	</div>
+   	  	    </div> -->
+   	  	 </div>
+   	  </div>
+   	  <!-- 照片 -->
+   	  <div class="photoes">
+   	  	<!-- <img src="image/n1.jpg" style="width:100%">
+   	  	<img src="image/1.jpg" style="width:100%"> -->
+   	  </div>
+   	  <!-- 加入 -->
+   	  <div class="add">
+   	  	 <div class="price">
+   	  	 	 <p><span>￥</span>99</p>
+   	  	     <!-- <div>含化妆</div> -->
+   	  	 </div>
+   	  	 <div class="join"><a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.meipian.www">我要加入</a></div>
+
+   	  </div>
+      <div class="empty"></div>
+   </div>
+   <script type="text/template" id="template1">
+         <%if(hasBackground){%>        
+         <img src=<%="http://7xlnue.com1.z0.glb.clouddn.com/"+model.imgs[0]+"?imageView2/2/w/640"%>
+                       style="width:100%;height:100%">
+          <%}else{%>
+          <img src="./image/nocover.png" style="width:100%;height:100%">
+          <%}%>
+          <div class="mes">
+                <p><%-model.tabName%></p>
+                <p><%-model.introduc%></p>
+                <p><%-model.shotDate%></p>
+                <p><a href=<%-"map.html?placeName="+model.placeName+"&x="+model.latitude+"&y="+model.longitude%>><%-model.placeName%></a></p>
+            </div>
+            <div class="portrait">
+               <img src=<%="http://"+model.headUrl%>>
+               <span><%-model.serviceUserName%></span>
+            </div>
+   </script> 
+   <script type="text/template" id="template2">
+    <%_.each(model.userHeadUrls,function(item,i){%>
+       
+           <img src=<%-"http://"+item%>>
+           
+        
+    <%})%>
+   </script>
+   <script type="text/template" id="template3">
+    <%_.each(model.imgs,function(item,i){%>
+       <%if(item==""){%>
+       <%}else{%>
+            
+           <img class="test-lazyload" src="image/blank.png" data-original=<%-"http://7xlnue.com1.z0.glb.clouddn.com/"+item%> style="width:100%">
+           
+             <%}%>
+        
+    <%})%>
+   </script>
+   <script type="text/template" id="template4">
+         <div class="title">
+             <p>美粉评价(<%if(hasTotal){%>
+             <%-model[0].total%>)
+             <%}else{%>
+             0)
+             <%}%>
+             </p>
+             <a href=<%-"assessment.html?serviceUserId="+serviceUserId%>><span>查看更多</span></a>
+         </div>
+          <div class="sort">
+             <%_.each(model,function(item,i){%>
+              <div class="content">
+                  <div class="assessmenter clearfix">
+                     <img src=<%-"http://"+item.userHeadUrl%>>
+                     <div>
+                        <span><%-item.userName%></span>
+                        <span><%if(item.star==1){%>
+                      <img src="image/full.png">
+                      <img src="image/empty.png">
+                      <img src="image/empty.png">
+                      <img src="image/empty.png">
+                      <img src="image/empty.png">
+                    <%}else if(item.star==2){%>
+                      <img src="image/full.png">
+                      <img src="image/full.png">
+                      <img src="image/empty.png">
+                      <img src="image/empty.png">
+                      <img src="image/empty.png">
+                    <%}else if(item.star==3){%>
+                      <img src="image/full.png">
+                      <img src="image/full.png">
+                      <img src="image/full.png">
+                      <img src="image/empty.png">
+                      <img src="image/empty.png">
+                      <%}else if(item.star==4){%>
+                      <img src="image/full.png">
+                      <img src="image/full.png">
+                      <img src="image/full.png">
+                      <img src="image/full.png">
+                      <img src="image/empty.png">
+                       <%}else if(item.star==5){%>
+                      <img src="image/full.png">
+                      <img src="image/full.png">
+                      <img src="image/full.png">
+                      <img src="image/full.png">
+                      <img src="image/full.png">
+                    <%}%></span>
+                     </div>
+                  </div>
+                 <p><%-item.content%></p>
+                 <div class="p_tu">
+                 <%_.each(item.orderReviewsImgs,function(item1,j){%>
+                 <a href=<%-"pic.html?url=http://"+item1.reviewsImg%>>
+                  <img src=<%-"http://"+item1.reviewsImg+"?imageView2/1/w/128/h/128"%>>
+                 <%})%>
+                  </a>
+                 </div>
+                 <span><%-item.createTime%></span>
+             </div>
+             <%})%>
+          </div>
+
+   </script>
+   <script type="text/javascript" src="js/common.js"></script>
+   <script type="text/javascript" src="js/zepto.min.js"></script>
+   <script type="text/javascript" src="js/underscore-min.js"></script>
+   <script type="text/javascript" src="js/lazyload.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+   <script type="text/javascript">
+      $(function(){
+          var hasBackground = true;var total,serviceUserId,url,title,desc;
+          var hasTotal=true;
+         /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                     url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+               var mjActivityId = request('mjActivityId');
+                /*--获取网页传递的参数 end--*/
+                /*--转化日期格式 begin--*/
+                function   formatDate(now)   {     
+                  var month=now.getMonth()+1;     
+                  var date=now.getDate();     
+                  return month+"月"+date+"日";     
+              }
+              /*--转化日期格式 end--*/
+              // 第一次请求begin
+         $.ajax({
+             type: 'POST',
+             url: '/meipian/mj/activity/getMjOfficialShotDetils',
+             data: { mjActivityId:40117},
+             dataType: 'json',
+             success: function(data){
+               console.log(data)
+                var result= data.data;
+                var background=result.imgs[0];
+                 serviceUserId = result.serviceUserId;
+                 title=result.serviceUserName+"豁出去99元拍"+result.tabName;
+                 desc=result.cityName+'最好的摄影师'+result.serviceUserName+'发起了"'+result.placeName+'"99元拍'+'大优惠活动！只剩下'+result.personNum+"个名额了！";
+                 console.log(desc)
+                 var img_="http://7xlnue.com1.z0.glb.clouddn.com/"+result.imgs[0]+"?imageView2/1/w/128/h/128";
+      console.log(img_)
+      if(img_=="http://"){
+        img_=false;
+      }
+      img=img_ || "./image/nocover.png";
+                console.log(img)
+                if(background==""){
+                  hasBackground=false;
+                  console.log(1)
+                  }else{
+                  hasBackground=true;
+               };
+               var template1 = _.template($('#template1').html())
+                $(".infor").html(template1({model:result,hasBackground:hasBackground}));
+
+                 var template2 = _.template($('#template2').html())
+                $(".book_2").html(template2({model:result}));
+
+                var template3 = _.template($('#template3').html())
+                $(".photoes").html(template3({model:result}));
+                 // 图片懒加载
+$('.test-lazyload').picLazyLoad({
+    threshold: 100,
+    placeholder: './image/blank.png'
+});
+ // 图片懒加载
+               // 第二次请求begin
+            $.ajax({
+             type: 'POST',
+             url: '/meipian/mj/reviews/mjOfficialShotServiceUserMjReviews',
+             data: { serviceUserId:serviceUserId,page:1,pageSize:3},
+             dataType: 'json',
+             success: function(data){
+                console.log(data);
+                var result=data.data.orderReviews;
+                if(result.length==0){
+                  hasTotal=false;
+                }else{
+                  hasTotal=true;
+                }
+                var template4 = _.template($('#template4').html())
+                $(".assessment").html(template4({model:result,hasTotal:hasTotal,serviceUserId:serviceUserId}));
+                var mm=$(".sort div").html();
+                if(mm==null){
+                  $(".sort").addClass("sort_1");
+                  $(".sort").html("该地点暂无任何评价");
+                }
+                // 分享请求  begin 
+                $.ajax({
+              type: 'POST',
+              url: '/meipian/wxconfig/getConfig',
+              data:{url:url},
+             dataType: 'json',
+             success: function(data){
+                
+                var datas = data.data;
+                
+wx.config({
+    debug: false, 
+    appId: datas.appId, 
+    timestamp: datas.timestamp, 
+    nonceStr: datas.nonceStr, 
+    signature: datas.signature,
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ'] 
+});
+
+wx.ready(function(){
+    // 获取“分享到朋友圈”
+    wx.onMenuShareTimeline({
+        title:title, 
+        desc: desc,
+        link:location.href,
+        imgUrl:img, 
+    });
+    // 获取“分享给朋友”
+    wx.onMenuShareAppMessage({
+        title: title,
+        desc: desc, 
+        link:location.href,
+        imgUrl:img, 
+        type: 'link', 
+    });
+    // “分享到QQ”
+     wx.onMenuShareQQ({
+       title: title, 
+        desc: desc,
+        link:location.href,
+        imgUrl: img,
+        type: 'link', 
+      
+    });
+});
+wx.error(function(res){
+   console.log(res)
+    
+});
+
+
+                 },
+             error: function(){
+                 
+             }
+      });
+                // 分享请求 end 
+             }
+            });      
+                // 第二次请求end
+
+             }
+            });
+         // 第一次请求end
+
+      })
+   </script>
+   </body>
+</html>

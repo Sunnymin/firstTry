@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title></title>
+         <link rel="stylesheet" type="text/css" href="css/base.css">
+         <link rel="stylesheet" type="text/css" href="css/choose.css">
+   </head>
+   <body>
+   <div class="layout">
+   	  <div class="starter">
+   	    <!-- <p class="fs25">美丽的小眸</p>
+   	  	<p class="fs14">帮您的朋友选择一位摄影师</p>
+   	  	<span></span>
+   	  	<img src="images/logo.png"> -->
+   	  </div>
+   	  <div class="tubiao">
+   	  	<div class="line">
+   	  		<!-- <div class="each">
+   	  		    <a href=""><img src="images/logo.png"></a>
+   	  		    <span>2</span>
+   	  		    <span><img src="images/heart_empty.png" class="img1">
+   	  		          <img src="images/heart_full.png" class="img2">
+   	  		    </span>
+   	  		</div>
+   	  		<div class="each">
+   	  		   <a href=""><img src="images/logo.png"></a>
+   	  		   <span>2</span>
+   	  		   <span><img src="images/heart_empty.png">
+   	  		   <img src="images/heart_full.png" class="img2"></span>
+   	  		</div>
+   	  		<div class="each">
+   	  		   <a href=""><img src="images/logo.png"></a>
+   	  		   <span>2</span>
+   	  		   <span><img src="images/heart_empty.png">
+   	  		   <img src="images/heart_full.png" class="img2"></span>
+   	  		</div>
+   	  		<div class="each">
+   	  		   <a href=""><img src="images/logo.png"></a>
+   	  		   <span>2</span>
+   	  		   <span><img src="images/heart_empty.png">
+   	  		   <img src="images/heart_full.png" class="img2"></span>
+   	  		</div>
+   	  		<div class="each">
+   	  		   <a href=""><img src="images/logo.png"></a>
+   	  		   <span>2</span>
+   	  		   <span><img src="images/heart_empty.png">
+   	  		   <img src="images/heart_full.png" class="img2"></span>
+   	  		</div> -->
+   	   </div>
+   	   <p>tips: 点击头像可进入摄影师主页查看作品</p>
+   	  </div>
+   	  <div class="assessment">
+        <div class="sort">
+   	  	<!-- <div class="content">
+   	  		<img src="images/logo.png">
+   	  		<p>
+   	  			<span class="fs15">美丽的小眸</span>
+   	  			<span class="fs12">赞了 摄影师熊大、摄影师熊五点五</span>
+   	  		</p>
+   	  		<div>拍的不错，是个直男！三十二个赞吧就给。</div>
+   	  	</div>
+
+   	  	<div class="content">
+   	  		<img src="images/logo.png">
+   	  		<p>
+   	  			<span class="fs15">美丽的小眸</span>
+   	  			<span class="fs12">赞了 摄影师熊大、摄影师熊五点五</span>
+   	  		</p>
+   	  		<div>拍的不错，是个直男！三十二个赞吧就给。</div>
+   	  	</div>
+
+   	  	<div class="content">
+   	  		<img src="images/logo.png">
+   	  		<p>
+   	  			<span class="fs15">美丽的小眸</span>
+   	  			<span class="fs12">赞了 摄影师熊大、摄影师熊五点五</span>
+   	  		</p>
+   	  		<div>拍的不错，是个直男！三十二个赞吧就给。</div>
+   	  	</div>
+   	  	<div class="content">
+   	  		<img src="images/logo.png">
+   	  		<p>
+   	  			<span class="fs15">美丽的小眸</span>
+   	  			<span class="fs12">赞了 摄影师熊大、摄影师熊五点五</span>
+   	  		</p>
+   	  		<div>拍的不错，是个直男！三十二个赞吧就给。</div>
+   	  	</div> -->
+        </div>
+   	  </div>
+   	  <div class="assess">
+   	  	<input type="text" name="">
+   	  	<span>评论</span>
+   	  </div>
+   	  <div class="hold"></div>
+   </div>
+   <script type="text/template" id="template1">
+        <p class="fs25"><%-model.userNickName%></p>
+        <p class="fs14">帮您的朋友选择一位摄影师</p>
+        <span></span>
+        <img src=<%-"http://image.allxiu.com/"+model.userHeadUrl+"?imageView2/1/w/140/h/140"%>>
+  </script>
+  <script type="text/template" id="template2">
+       <%_.each(voteRecords,function(item,i){%>
+         <div class="each" id=<%-"isChampion"+item.isChampion%>>
+              <a href=<%-"photographer_new.html?serviceUserId="+item.photographerId%>><img src=<%-"http://image.allxiu.com/"+item.photographerHeadUrl+"?imageView2/1/w/80/h/80"%>></a>
+              <span><%-item.voteCount%></span>
+              <div><img src="images/heart_empty.png" class="img1">
+                    <img src="images/heart_full.png" class="img2">
+              </div>
+          </div>
+        <%});%>
+  </script>
+  <script type="text/template" id="template3">
+  <%_.each(comments,function(item,i){%>
+       <div class="content">
+            <%if(item.headUrl.indexOf("wx")==-1){%>
+        <img src=<%-"http://image.allxiu.com/"+item.headUrl+"?imageView2/1/w/80/h/80"%>>
+       <%}else{%>
+       <img src=<%-item.headUrl%>>
+      <%}%>
+          <p>
+            <span class="fs15"><%-item.nickName%></span>
+            <span class="fs12">
+            <%if(item.voteRecord!=""){%>
+             赞了 <%$(item.voteRecord.split(",")).each(function(i,ele){%>
+              <img src=<%-"http://image.allxiu.com/"+ele+"?imageView2/1/w/64/h/64"%>>
+                 <%})%>
+            <%}else{%>
+              <img class="hidden" src=<%-"http://image.allxiu.com/"+"?imageView2/1/w/64/h/64"%>>
+             <%}%>
+            </span>
+          </p>
+          <div><%-item.content%></div>
+        </div>
+    <%});%>
+  </script>
+   <script type="text/javascript" src="js/common.js"></script>
+   <script type="text/javascript" src="js/zepto.js"></script>
+   <script type="text/javascript" src="js/underscore-min.js"></script>
+   <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script type="text/javascript">
+  	$(function(){
+        var index;var pageIndex=1;
+      /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                      url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+              var orderId = request('orderId');
+                /*--获取网页传递的参数 end--*/
+       // 第一次请求 begin
+        $.ajax({
+             type: 'POST',
+             url: '/meipian/order/vote/detail',
+             data: {orderId:orderId},
+             dataType: 'json',
+             success: function(data){
+              console.log(data);
+              var data=data.data;
+              var voteRecords=data.voteRecords;
+              var comments=data.comments;
+              var photographerId;
+              img="http://image.allxiu.com/"+data.userHeadUrl;
+              var template1 = _.template($('#template1').html())
+              $(".starter").html(template1({model:data}));
+
+              var template2 = _.template($('#template2').html())
+              $(".line").html(template2({voteRecords:voteRecords}));
+
+              // 高度计算
+              var total=110;
+              var arr=[];
+              var arr1=[];
+              var h,H,count;
+            // 初始高度 b
+              $(voteRecords).each(function(i,ele){
+                h=parseInt(ele.voteCount);
+                console.log(h);
+                arr.push(h);
+                });
+              console.log(arr);
+                count=getSum(arr);
+                console.log(count);
+                $(arr).each(function(i,ele){
+                   H=ele/count*total;
+                   arr1.push(H);
+                });
+                console.log(arr1);
+              for(var i = 0; i <arr1.length;i++){
+                console.log(arr1[i])
+                $(".each").each(function(i,ele){
+                 $(ele).height(arr1[i])
+                })
+              }
+              // 初始高度 e
+              // 求和函数begin
+              function getSum(array){
+                var sum=0;
+                for (var i = 0; i < array.length; i++){
+                   sum += array[i];
+                  }
+                return sum;
+              }
+             
+              //点赞授权
+              $(".each div img").click(function(){
+           // 微信授权
+           var  redirect="http://test.allxiu.com/h5/new/choose_new.html?orderId="+orderId;
+          window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa1f70fd6edc9b409&redirect_uri="+redirect+"&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect"; 
+            var code=request('code');
+           
+        });
+
+               var template3 = _.template($('#template3').html())
+              $(".sort").html(template3({comments:comments}));
+               var div = document.createElement("div");
+                   $(div).addClass("more");
+                   $(".assessment").append(div);
+              // 加载更多begin
+  $(window).scroll(function(){
+  if(document.body.scrollTop+document.documentElement.clientHeight>=document.body.scrollHeight){
+       pageIndex ++;
+     $.ajax({
+             type: 'POST',
+             url: '/meipian/order/vote/comments',
+             data: { orderId:orderId,pageIndex:pageIndex},
+             dataType: 'json',
+             success: function(data){
+              
+              if(data.code==300){
+                 $(".more").html("没有更多喽")
+              }else if(data.code==200){
+                console.log(pageIndex) 
+              console.log(data);
+              var comments=data.data;
+              $(".more").html("正在加载");
+              var div = document.createElement("div");
+              $(div).addClass("sort1");
+                $(".sort").append(div);
+
+                var template3 = _.template($('#template3').html())
+              $(".sort1").html(template3({comments:comments}));
+                
+              };
+            }
+          });
+   }
+ });
+              // 加载更多end
+             }
+        })
+        // 第一次请求end
+        // 评论请求begin
+           
+            $("input").focus(function(){
+              $("input").val("");
+            })
+             $('input').on('focus', function () {
+  var target = this;
+  setTimeout(function(){
+    
+        target.scrollIntoViewIfNeeded();
+
+        console.log('scrollIntoViewIfNeeded');
+      },400);
+});
+            $(".assess span").click(function(){
+              var content=$("input").val();
+              if(content==""){
+                $("input").val("您还没有做出评价哦");
+              }else{
+                // 微信授权
+            var  redirect="http://test.allxiu.com/h5/new/choose_new.html?orderId="+orderId;
+          window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa1f70fd6edc9b409&redirect_uri="+redirect+"&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect"; 
+            var code=request('code');
+           };
+            // 评论请求end
+          })
+        
+                // 分享请求  begin 
+                $.ajax({
+              type: 'POST',
+              url: '/meipian/wxconfig/getConfig',
+              data:{url:url},
+             dataType: 'json',
+             success: function(data){
+                 title="万能的朋友圈里懂艺术的大咖快出现，我搞不定啦！";
+                 desc="本宫想拍个照，摄影师都辣么优秀，快来帮我选。";
+                var datas = data.data;
+                
+wx.config({
+    debug: false, 
+    appId: datas.appId, 
+    timestamp: datas.timestamp, 
+    nonceStr: datas.nonceStr, 
+    signature: datas.signature,
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ'] 
+});
+
+wx.ready(function(){
+    // 获取“分享到朋友圈”
+    wx.onMenuShareTimeline({
+        title:title, 
+        desc: desc,
+        link:location.href,
+        imgUrl:img, 
+    });
+    // 获取“分享给朋友”
+    wx.onMenuShareAppMessage({
+        title: title,
+        desc: desc, 
+        link:location.href,
+        imgUrl:img, 
+        type: 'link', 
+    });
+    // “分享到QQ”
+     wx.onMenuShareQQ({
+       title: title, 
+        desc: desc,
+        link:location.href,
+        imgUrl: img,
+        type: 'link', 
+      
+    });
+});
+wx.error(function(res){
+   console.log(res)
+    
+});
+
+
+                 },
+             error: function(){
+                 
+             }
+      });
+                // 分享请求 end   
+   })
+  </script>
+  </body>
+</html>

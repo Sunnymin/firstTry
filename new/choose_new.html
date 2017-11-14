@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title></title>
+         <link rel="stylesheet" type="text/css" href="css/base.css">
+         <link rel="stylesheet" type="text/css" href="css/choose_new.css">
+   </head>
+   <body>
+   <div class="layout">
+        <div class="starter"></div>
+        <div class="tubiao">
+           <div class="line">
+           </div>
+           <p>点击头像可进入摄影师主页查看作品</p>
+       </div>
+       <div class="assessment">
+           <div class="sort">
+           </div>
+       </div>
+       </div>
+   <div class="assess">
+         <div class="test_box" contenteditable="true"><br/></div>
+        <span class="pinglun">评论</span>
+    </div>
+   <script type="text/template" id="template1">
+         <p class="fs25">帮<%-model.userNickName%>选摄影师</p>
+        <p class="fs14"><%-model.city%>&nbsp;·&nbsp;<%-model.tab%>写真&nbsp;·&nbsp;<%-date%></p>
+        <span></span>
+        <img src=<%-"http://image.allxiu.com/"+model.userHeadUrl+"?imageView2/1/w/140/h/140"%>>
+  </script>
+  <script type="text/template" id="template2">
+       <%_.each(voteRecords,function(item,i){%>
+         <div class="each" id=<%-"isChampion"+item.isChampion%>>
+              <a href=<%-"photographer_new.html?serviceUserId="+item.photographerId%>><img src=<%-"http://image.allxiu.com/"+item.photographerHeadUrl+"?imageView2/1/w/80/h/80"%>></a>
+              <span><%-item.voteCount%></span>
+              <div><img src="images/heart_empty.png" class="img1">
+                    <img src="images/heart_full.png" class="img2" id=<%-"isVote"+item.isVote%>>
+              </div>
+          </div>
+        <%});%>
+  </script>
+  <script type="text/template" id="template3">
+  <%_.each(comments,function(item,i){%>
+       <div class="content">
+         <%if(item.headUrl.indexOf("wx")==-1){%>
+        <img src=<%-"http://image.allxiu.com/"+item.headUrl+"?imageView2/1/w/80/h/80"%>>
+       <%}else{%>
+       <img src=<%-item.headUrl%>>
+      <%}%>
+          <p>
+            <span class="fs15"><%-item.nickName%></span>
+            <span class="fs12">
+            <%if(item.voteRecord!=""){%>
+             赞了 <%$(item.voteRecord.split(",")).each(function(i,ele){%>
+              <img src=<%-"http://image.allxiu.com/"+ele+"?imageView2/1/w/64/h/64"%>>
+                 <%})%>
+            <%}else{%>
+              <img class="hidden" src="images/logo.png">
+             <%}%>
+            </span>
+          </p>
+          <div><%-item.content%></div>
+        </div>
+    <%});%>
+  </script>
+  <script type="text/template" id="template4">
+      <div class="content">
+        <img src=<%-Img%>>
+          <p>
+            <span class="fs15"><%-result.nickName%></span>
+            <span class="fs12">赞了<%$(voteRecord).each(function(i,ele){%>
+              <img src=<%-"http://image.allxiu.com/"+ele+"?imageView2/1/w/64/h/64"%>>
+            <%})%>
+            </span>
+          </p>
+          <div><%-result.content%></div>
+        </div>
+  </script>
+   <script type="text/javascript" src="js/common.js"></script>
+   <script type="text/javascript" src="js/zepto.js"></script>
+   <script type="text/javascript" src="js/underscore-min.js"></script>
+   <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script type="text/javascript">
+  	$(function(){
+       var pageIndex=1;var index;
+      /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                      url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+              var orderId = request('orderId');
+              var code=request('code');
+      /*--获取网页传递的参数 end--*/
+         var  link="http://app.allxiu.com/h5/new/choose.html?orderId="+orderId;  
+       // 第一次请求 begin
+        $.ajax({
+             type: 'POST',
+             url: '/v2/order/vote/detail',
+             data: {orderId:orderId,code:code},
+             dataType: 'json',
+             success: function(data){
+              console.log(data);
+              var data=data.data;
+              var voteRecords=data.voteRecords;
+              var comments=data.comments;
+              var photographerId;
+              var nn=data.shotDate.split("-");
+              var date=nn[0]+"."+nn[1]+"."+nn[2];
+               img="http://image.allxiu.com/"+data.userHeadUrl;
+              var template1 = _.template($('#template1').html());
+              $(".starter").html(template1({model:data,date:date}));
+
+              var template2 = _.template($('#template2').html())
+              $(".line").html(template2({voteRecords:voteRecords}));
+
+              // 高度计算
+              var total=6.875;
+              var arr=[];//每人票数
+              var arr1=[];//每人高度
+              var h,H,count;
+              var left=[0,3.4375,6.875,10.3125,13.75];
+            // 初始高度 b
+               $(voteRecords).each(function(i,ele){
+                h=parseInt(ele.voteCount);
+                 arr.push(h);
+                });
+               count=getSum(arr);
+               $(arr).each(function(i,ele){
+                   H=ele/count*total;
+                   arr1.push(H);
+                });
+              for(var i = 0; i <arr1.length;i++){
+                $(".each").each(function(i,ele){
+                  ele.style.height=arr1[i]+"rem";
+                  ele.style.left=left[i]+"rem";
+                })
+              }
+              // 初始高度 e
+              // 求和函数begin
+              function getSum(array){
+                var sum=0;
+                for (var i = 0; i < array.length; i++){
+                   sum += array[i];
+                  }
+                return sum;
+              }
+        // 求和函数end
+          $(".each div").each(function(i){
+                $(this).click(function(){
+                      photographerId=voteRecords[i].photographerId;
+                      index=i;
+         //点赞后 高度计算
+                var ele=$(this).prev();
+                var num=ele.html();
+                var progress=$(this).parent();
+                var height;
+                var _this=$(this);
+          // 第二次请求begin
+            $.ajax({
+                   type: 'POST',
+                   url: '/v2/order/vote',
+                   data: {photographerId:photographerId,code:code,orderId:orderId},
+                   dataType: 'json',
+                   success: function(data){
+                            console.log(data);
+                            var voteRecords=data.data.voteRecords;
+                            var isVote=voteRecords[index].isVote;
+                         if(isVote==1){
+                              num=Number(num)+1;
+                              _this.find(".img2").show();
+                              _this.find(".img1").hide();
+                          }else{
+                              num=Number(num)-1;
+                              _this.find(".img1").show();
+                              _this.find(".img2").hide();
+                       };
+                       ele.html(num);
+               // 高度计算
+                        var total=6.875;
+                        var arr=[];//每人票数
+                        var arr1=[];//每人高度
+                        var h,H,count;
+                        var left=[0,3.4375,6.875,10.3125,13.75];
+
+            // 初始高度 b
+                $(voteRecords).each(function(i,ele){
+                         h=parseInt(ele.voteCount);
+                         arr.push(h);
+                     });
+                count=getSum(arr);
+                 $(arr).each(function(i,ele){
+                   H=ele/count*total;
+                   arr1.push(H);
+                });
+                for(var i = 0; i <arr1.length;i++){
+                   $(".each").each(function(i,ele){
+                       ele.style.height=arr1[i]+"rem";
+                       ele.style.left=left[i]+"rem";
+                   })
+                }
+              // 初始高度 e
+             },
+             error: function(){
+                 console.log('error!')
+             }
+             });
+            // 第二次请求end
+            });
+        // });
+});
+              var template3 = _.template($('#template3').html())
+              $(".assessment").html(template3({comments:comments}));
+              var div = document.createElement("div");
+              $(div).addClass("more");
+              $(".assessment").append(div);
+              // 加载更多begin
+  $(window).scroll(function(){
+  if(document.body.scrollTop+document.documentElement.clientHeight>=document.body.scrollHeight){
+       pageIndex ++;
+     $.ajax({
+             type: 'POST',
+             url: '/v2/order/vote/comments',
+             data: { orderId:orderId,pageIndex:pageIndex},
+             dataType: 'json',
+             success: function(data){
+              if(data.code==300){
+                 $(".more").html("到我底线了")
+              }else if(data.code==200){
+                $(".more").html("正在加载");
+                var comments=data.data;
+               var div = document.createElement("div");
+              $(div).addClass("sort1");
+                $(".sort").append(div);
+
+                var template3 = _.template($('#template3').html())
+              $(".sort1").html(template3({comments:comments}));
+              };
+            }
+          });
+   }
+ });
+              // 加载更多end
+             }
+        })
+        // 第一次请求end
+       // 评论请求begin
+    $(".test_box").focus(function(){
+        $(".test_box").html("");
+       })
+    $('.test_box').on('focus', function () {
+        var target = this;
+        setTimeout(function(){
+                target.scrollIntoViewIfNeeded();
+          },400);
+     });
+            $(".assess span").click(function(){
+              var content=$(".test_box").html();
+             if(content==""){
+                 $(".test_box").html("您还没有做出评价哦");
+               }else{
+               $.ajax({
+                     type: 'POST',
+                     url: '/v2/order/vote/comment',
+                     data: {content:content,code:code,orderId:orderId},
+                     dataType: 'json',
+                     success: function(data){
+                           console.log(data);
+                           $(".test_box").html("");
+                           var result=data.data;
+                           var voteRecord=result.voteRecord.split(",");
+                           var template4 = _.template($('#template4').html());
+                           var Img=result.headUrl;
+                           if(Img.indexOf("wx")==-1){
+                            Img="http://image.allxiu.com/"+result.headUrl+"?imageView2/1/w/80/h/80";
+                           }else{
+                            Img=result.headUrl;
+                           }
+                           var mmm = document.createElement("div");  
+
+                           $(".assessment").prepend(mmm);
+                           $(mmm).html(template4({result:result,voteRecord:voteRecord,Img:Img}));
+                          }
+                    }); 
+            };
+          })
+        // 评论请求end
+        // 分享请求  begin 
+      $.ajax({
+             type: 'POST',
+             url: '/v2/wxconfig/getConfig',
+             data:{url:url},
+             dataType: 'json',
+             success: function(data){
+                 title="万能的朋友圈里懂艺术的大咖快出现，我搞不定啦！";
+                 var desc="本宫想拍个照，摄影师都辣么优秀，快来帮我选。";
+                 var datas = data.data;
+                
+          wx.config({
+                 debug: false, 
+                 appId: datas.appId, 
+                 timestamp: datas.timestamp, 
+                 nonceStr: datas.nonceStr, 
+                 signature: datas.signature,
+                 jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ'] 
+            });
+
+          wx.ready(function(){
+     // 获取“分享到朋友圈”
+                 wx.onMenuShareTimeline({
+                 title:title, 
+                 desc: desc,
+                 link:link,
+                 imgUrl:img, 
+               });
+    // 获取“分享给朋友”
+           wx.onMenuShareAppMessage({
+                 title: title,
+                 desc: desc, 
+                 link:link,
+                 imgUrl:img, 
+                 type: 'link', 
+             });
+    // “分享到QQ”
+           wx.onMenuShareQQ({
+                 title: title, 
+                 desc: desc,
+                 link:link,
+                 imgUrl: img,
+                 type: 'link', 
+            });
+        });
+           wx.error(function(res){
+                       console.log(res)
+               });
+         },
+             error: function(){
+        }
+      });
+                // 分享请求 end   
+   })
+  </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0,  width=device-width">
+   
+</head>
+<body>
+
+<script>
+    /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                      var url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+             var placeName = decodeURI(request('placeName'));
+             var y=request("x");
+              var x=request("y");
+            
+     /*--获取网页传递的参数 end--*/
+       window.location.href='http://m.amap.com/navi/?dest='+x+','+y+'&destName='+placeName+'&hideRouteIcon=1&key=50084e2d7958e8401a7e6a00e6037c26';
+       var img = document.getElementsByClassName(".amap-marker-content")[0];
+      console.log(img)
+       img.src="image/red.png"
+</script>
+</body>
+</html>

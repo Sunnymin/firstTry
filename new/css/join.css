@@ -1,0 +1,147 @@
+.n1{
+            width: 29%;
+           }
+           .infor{
+            margin-bottom: 1.5625rem;
+           }
+           .infor p:first-child{
+            font-size: 1.4375rem;
+           color: #333333;
+           }
+           .infor p:nth-child(2){
+            font-size: 0.875rem;
+           }
+           .border{
+            border-bottom: 1px solid #d8d8d8;
+           }
+           /*摄影师简介*/
+.introduce_{
+  width:100%;
+  height: 6.375rem;
+  padding: 1.875rem 0.9375rem 0;
+ }
+ .border{
+  border-bottom:1px solid #d8d8d8;
+ }
+ .cover{
+  height:5.75rem;
+ }
+ .color{
+  color:#D5AA09;
+}
+.color1{
+  color:#A1A1A1;
+}
+.color2{
+  color:#B27F09;
+}
+.blue{
+  color:#ACC8C6;
+}
+.red{
+  color:#CB3535;
+}
+.yellow{
+  color:#CAC72E;
+}
+.green{
+  color:#309A2E;
+}
+.color_blue{
+  color:#0091AC;
+}
+.nothing{
+  display:none;
+}
+ .intro_l{
+  float:left;
+  margin-bottom:1.5625rem;
+ }
+
+ .intro_r{
+  float:right;
+ }
+ .intro_l p{
+  font-size:0.9375rem;
+  color:#333333;
+  margin-bottom:0.625rem;
+ }
+ .intro_l img{
+  width:1rem;
+  height:0.75rem;
+  /* margin-left: 10px; */
+  margin-right: 0.625rem;
+ }
+ .intro_l .level{
+  color:#d5aa09;
+ }
+ .intro_l .addr{
+  color:#333333;
+ }
+ .addr a{
+  color:#333333;
+  text-decoration: underline;
+ }
+ .intro_l a{
+  text-decoration:none;
+ }
+ .intro_r img{
+  width:2.5rem;
+  height:2.5rem;
+  border-radius: 1.25rem;
+ }
+ .mess{
+ position:relative;
+}
+ .mess span{
+   display:block;
+   border-bottom:1px solid #d8d8d8;
+   width:2.6875rem;
+   height:1px;
+ }
+ .mess p{
+  font-size:0.9375rem;
+  color:#333333;
+  width:15.625rem;
+  margin-top:3.0625rem;
+  margin-bottom:1.25rem;
+ }
+ .mess img{
+  width:2.1875rem;
+  height:2.1875rem;
+  position:absolute;
+  right:0;
+  bottom:0.3125rem;
+ }
+ .xiangqing{
+  margin-top: 1.5rem;
+  border: none;
+ }
+ .xiangqing img{
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 0.9375rem;
+  margin-right:0.3125rem;
+  vertical-align: middle;
+ }
+ .intro_l p{
+  font-size: 0.9375rem;
+ }
+ .once .title{
+  margin-top: 1.1875rem;
+  margin-bottom: 1.5625rem;
+ }
+ .photoed{
+  padding-top: 0px;
+ }
+ .item{
+  border: none;
+ }
+ .fs14 img{
+  width: 1.25rem;
+  height: 1.0625rem;
+ }
+ .confirm{
+  left: 17.5rem;
+  width: 5.625rem;
+ }

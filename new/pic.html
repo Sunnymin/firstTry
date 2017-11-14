@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title></title>
+         <link rel="stylesheet" type="text/css" href="css/base.css">
+         <style type="text/css">
+         	body{
+         		background: #000000;
+         	}
+         	img{
+         		width: 100%;
+         		margin: 0 auto;
+         		position: absolute;
+         		top: 50%;
+         		left: 0;
+
+         	}
+         </style>
+   </head>
+   <body>
+      <img src="" id="img">
+   <script type="text/javascript">
+   	 
+    /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                      var url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+              url= request('url');
+                /*--获取网页传递的参数 end--*/
+               var img =document.getElementById("img");
+               img.src=url;
+               img.onload=function(){
+               	img.style.marginTop=-(img.height/2)+"px";
+               }
+   </script>
+   </body>
+</html>

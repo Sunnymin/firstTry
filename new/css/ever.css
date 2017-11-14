@@ -1,0 +1,153 @@
+.photoes{
+	 width: 100%;
+      max-width: 750px;
+      min-width: 300px;
+      margin: 0 auto;
+      position: relative;
+}
+video{
+	padding:0;
+	margin:0;
+	width:100%;
+	height:15.625rem;
+	margin-top:-1.25rem;
+	background: black;
+}
+.photoes img{
+	width: 100%;
+}
+.hide{
+	display:none;
+}
+
+.infor{
+	margin-left: 0.9375rem;
+	border-bottom: 1px solid #d8d8d8;
+	margin-top:1rem;
+	position:relative;
+}
+.infor p{
+	font-size:1.5625rem;
+	color: #333333;
+	margin-bottom: 0.625rem;
+	font-weight:bold;
+}
+.infor span{
+	display: block;
+	font-size: 0.9375rem;
+	margin-bottom: 1.25rem;
+	font-weight:normal;
+	// color:#333333;
+	// text-shadow:0 1px 1px;
+}
+.infor img{
+	position:absolute;
+	width:2.5rem;
+	height:2.5rem;
+	border-radius:1.25rem;
+	right:0.9375rem;
+	top:0.3125rem;
+}
+.photoes div div{
+	width: 2.5rem;
+	border-top:2px solid #ffffff;
+}
+.download_{
+	width: 100%;
+	height:4.375rem;
+    margin-top: -0.25rem;
+    padding: 1.0625rem 0.8125rem 0 0.9375rem;
+    // box-shadow: 1px 1px 5px #333333;
+}
+.shadow{
+	box-shadow: 1px 1px 0.3125rem #333333;
+}
+.download img{
+	width: 2.625rem;
+	height: 2.625rem;
+	margin-right: 0.625rem;
+}
+.download p{
+	font-size: 0.875rem;
+	color: #333333;
+}
+.download>.fr{
+	color:#ff5858;
+	font-size: 0.875rem;
+	border:1px solid #ff5858;
+	width: 6.875rem;
+	height: 2.375rem;
+	line-height: 2.375rem;
+	text-align: center;
+	border-radius: 6.25rem;
+}
+.download a{
+	color:#ff5858;
+	width: 6.875rem;
+	height: 2.375rem;
+}
+.photographer {
+    width:100%;
+	text-align:center;
+	color:#333333;
+	font-size:1.5625rem;
+	padding:1.875rem 0;
+}
+
+.photographer a img{
+	width:3.75rem;
+	height:3.75rem;
+	border-radius:1.875rem;
+	margin-bottom:0.625rem;
+}
+.photographer p{
+	font-weight: bold;
+}
+.photographer div{
+	line-height:1.25rem;
+}
+.photographer div img{
+	width:1rem;
+	height:0.6875rem;
+	margin-right:0.25rem;
+}
+.photographer span{
+	font-size:0.875rem;
+	// margin-top:10px;
+}
+.color{
+  color:#D5AA09;
+}
+.color1{
+  color:#A1A1A1;
+}
+.color2{
+  color:#B27F09;
+}
+.invide{
+	margin:0 auto;
+    margin-top: 2.1875rem;
+    font-size:0.9375rem;
+   color:#333333;
+    text-align:center;
+   margin-bottom: 0.9375rem;
+  
+}
+.color4{
+    color:#ff5858;
+    display:block;
+    margin:0 auto;
+    text-align:center;
+}
+.inviteCode{
+    display: block;
+    background:#f0f0f0;
+     width:21.625rem;
+    height:3.125rem; 
+    margin:0 auto;
+    line-height:3.125rem;
+    text-align: center;
+     color:#ff5858;
+     margin-bottom: 3.75rem;
+     font-size:1.5625rem;
+}

@@ -1,0 +1,156 @@
+.layout{
+     width: 100%;
+     max-width: 750px;
+     min-width: 300px;
+     margin: 0 auto;
+    padding-top:1.25rem;
+    color:#333333;
+    
+}
+.padding{
+	 padding-left:0.9375rem;
+	 padding-right:0.9375rem;
+	 }
+h2{
+	font-size:1.5625rem;
+	line-height:2.125rem;
+	margin-bottom: 0.625rem;
+	font-weight:normal;
+}
+.mp{
+	color:rgb(140,140,140);
+}
+.fs17{
+	font-size:1.0625rem;
+	margin-bottom:1.8125rem;
+
+}
+.mar_{
+	margin-top:-1.5rem;
+}
+.fs17_{
+	text-align:center;
+	font-size:0.9375rem;
+	font-weight:bold;
+	margin-top:-1.5rem;
+}
+.center_{
+	text-align:center;
+}
+p{
+font-size:1.0625rem;	
+line-height:1.625rem;
+margin-bottom:1.625rem;
+}
+.border{
+	border-left: 3px solid rgb(219,219,219);
+	padding-left:0.625rem;
+}
+.title_{
+	background-color: rgb(255,79,121);
+	color:rgb(255,255,255);
+	font-weight:bold;
+}
+.weight{
+	font-weight:bold;
+}
+.fs20{
+	font-size:1.125rem;
+	font-weight: bold;
+	margin-top:2.1875rem;
+	margin-bottom:0.9375rem;
+}
+.fs20_{
+	font-size:0.875rem;
+	font-weight:bold;
+	margin-top:1.75rem;
+	margin-bottom:1.5rem;
+}
+.color{
+color: rgb(255,79,121);
+}
+.fs24{
+	font-size:1.5rem;
+
+
+	margin-top:1.5625rem;
+}
+.center{
+	text-align:center;
+		font-weight:bold;
+}
+.normal{
+	text-align:center;
+	font-weight:normal;
+	font-size:0.875rem;
+	color:rgb(62,62,62);
+}
+.red{
+	color:#FF5858;
+}
+.fs30{
+	font-size:1.875rem;
+	text-align: center;
+	margin-top:2.1875rem;
+	margin-bottom:1.875rem;
+}
+.fs30 span{
+	display:block;
+}
+.fs14_{
+	font-size:0.875rem;
+
+}
+.dis{
+	text-align:center;
+	margin-top:-1.5625rem;
+}
+.pic span{
+	display:block;
+	width:21.5625rem;
+	margin-left:0.9375rem;
+	margin-top:1.875rem;
+	margin-bottom:1.875rem;
+
+}
+.fs19{
+	font-size:1.1875rem;
+}
+.three{
+	display:block;
+	text-align:center;
+	margin-left:0.9375rem;
+	margin-top:3.125rem;
+	margin-bottom:1.6875rem;
+}
+.border_{
+	border-bottom: 1px solid rgb(62,62,62);
+}
+.mar{
+	margin-bottom:2.6875rem;
+
+
+}
+.normal .fs20{
+	font-weight:normal;
+}
+.pic{
+	text-align:center;
+	// margin-left: -0.9375rem;
+}
+img{
+	width:20.625rem;
+	margin-bottom:0.625rem;
+}
+.story{
+
+	margin-bottom:1.875rem;
+	margin-left: 0.9375rem;
+	text-align:left;
+	line-height: 1.4375rem;
+	color:#333333;
+}
+.pic1 img{
+ width:20.625rem;
+ height:13.1875rem;
+}

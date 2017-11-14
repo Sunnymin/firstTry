@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title></title>
+         <link rel="stylesheet" type="text/css" href="css/base.css">
+         <link rel="stylesheet" type="text/css" href="css/register.css">
+         
+   </head>
+   <body>
+    <img src="images/handstand.png" class="bg">
+   <div class="layout padding">
+      <div class="title_">
+         <!-- <img src="images/logo.png">
+         <p>合伙人小哞邀请你<br>
+             成为美片会员，永享9折优惠！</p>  -->
+    <!--   <span></span> -->
+     </div>
+     <div>
+          <input  class="tel" type="tel" name="" value="输入手机号" maxlength="11"><input class="button1 color" type="button" name="" value="获取验证码" id="btn" >
+     </div>
+     <div>
+          <input class="check" type="tel" name="" value="输入验证码"><input class="button2" type="button" name="" value="成为会员">
+     </div>
+     <div class="cover1">
+        <div class="cover">
+           <p class="title">绑定成功</p>
+           <p class="content">下载美片APP免密登录后可获得<br>专属特殊服务 </p>
+           <p class="load_"><a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.meipian.www">赶快去下载</a></p>
+        </div>
+     </div>
+     <div class="rand">
+         <p>美片一万名优秀摄影师，200座城市，等您翻牌子</p>
+         <div class="rand_">
+         <ul>
+          <!--   <li>
+               <span>1</span>
+               <img src="images/logo.png">
+               <p>
+                  <div>
+                     <img src="images/blue.png">
+                     <span>蓝钻</span>
+                  </div>
+                   <p>傲秀隐者</p>
+               </p>
+               <p>北京市排名第一</p>
+            </li>
+             <li>
+               <span>1</span>
+               <img src="images/logo.png">
+               <p>
+                   <div>
+                     <img src="images/blue.png">
+                     <span>蓝钻</span>
+                  </div>
+                   <p>傲秀隐者</p>
+               </p>
+               <p>北京市排名第一</p>
+            </li> -->
+         </ul>
+         </div>
+     </div>
+   </div>
+   <div class="download_"></div>
+   <div class="download shadow">
+         <div class="fl">
+            <div class="fl"><img src="images/logo.png"></div>
+            <div class="fr">
+               <p>美片 · 约拍神器</p>
+               <p>口碑爆表的摄影平台</p>
+            </div>
+         </div>
+      <!-- <div class="fr"><a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.meipian.www">下载</a></div> -->
+  </div>
+   <script type="text/template" id="template1">
+        <img src=<%-"http://image.allxiu.com/"+model.headUrl+"?imageView2/1/w/64/h/64"%>>
+        <p>合伙人<%-model.nickName%>邀请你<br>
+         成为美片会员，永享9折优惠！</p> 
+  </script>
+  <script type="text/template" id="template2">
+      <%_.each(model,function(item,i){%>
+           <li>
+               <span class="color_r"><%-i+1%></span>
+              <a href=<%-"photographer_new.html?serviceUserId="+item.serviceUserId%>>
+               <img src=<%-"http://image.allxiu.com/"+item.headUrl+"?imageView2/1/w/80/h/80"%>>
+              </a>
+               <p>
+                  <div>
+                   <%if(item.level=="铜级"){%>
+                      <img src="./images/copper.png" ><span class="color2">铜级</span>
+                    <%}else if(item.level=="银级"){%>
+                    <img src="./images/silver.png" ><span class="color1">银级</span>
+                    <%}else if(item.level=="钻级"){%>
+                    <img src="./images/diamond.png" ><span class="diamond">钻级</span>
+                    <%}else if(item.level=="金级"){%>
+                    <img src="./images/gold.png" ><span class="color">金级</span>
+                    <%}else if(item.level=="红钻"){%>
+                    <img src="./images/red.png" >
+                    <span class="red">红钻</span>
+                    <%}else if(item.level=="黄钻"){%>
+                    <img src="./images/yellow.png" >
+                    <span class="yellow">黄钻</span>
+                    <%}else if(item.level=="绿钻"){%>
+                    <img src="./images/green.png" >
+                    <span class="green">绿钻</span>
+                    <%}else if(item.level=="蓝钻"){%>
+                    <img src="./images/blue.png" >
+                    <span class="blue">蓝钻</span>
+                    <%}%> 
+                  </div>
+                   <p><%-item.serviceUserName%></p>
+               </p>
+               <p>北京市排名第一</p>
+            </li>
+    <%});%>
+   </script>
+   <script type="text/javascript" src="js/common.js"></script>
+   <script type="text/javascript" src="js/zepto.js"></script>
+   <script type="text/javascript" src="js/underscore-min.js"></script>
+   <script type="text/javascript" src="js/register.js"></script>
+   
+   </body>
+</html>

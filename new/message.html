@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title>填写信息</title>
+         <link rel="stylesheet" type="text/css" href="css/base.css">
+         <link rel="stylesheet" type="text/css" href="css/order.css">
+          <style type="text/css">
+              .item_r span{
+    font-size:1.125rem;
+    color:#ff5858;
+ }
+ .item_r{
+    position: relative;
+ }
+ #tab{
+    display: inline-block;
+    width: 4.375rem;
+    height:3.1875rem ;
+    line-height: 3.7815rem;
+   position: absolute;
+   right: 29px;
+   bottom: 13px;
+   text-align: right;
+   }
+  #time{
+    display: inline-block;
+    width: 6.3125rem;
+    height:3.1875rem ;
+    line-height: 3.7815rem;
+     position: absolute;
+   right: 29px;
+   bottom: 13px;
+   }
+          </style>
+   </head>
+   <body>
+   <div class="layout">
+     
+       <div class="content">
+       <div class="item">
+        <p class="item_l">选择拍摄类型</p>
+        <p class="item_r"><span id="tab"></span>&nbsp;&nbsp;﹥</p>
+      </div>
+        <div class="item">
+            <p class="item_l">选择拍摄时间段</p>
+            <p class="item_r" ><span id="time"></span>&nbsp;&nbsp;﹥</p>
+        </div>
+        <div class="item tel_p">
+            <input class="button1" type="button" name="" value="输入手机号" id="btn" >
+            <!-- <p class="item_l" id="btn">获取验证码</p> -->
+            <input  class="tel" type="tel" name="" value="" maxlength="11">
+        </div>
+        <div class="item tel_p">
+           <p class="item_l">输入验证码</p>
+           <input class="check" type="tel" name="" value=""> 
+           
+        </div>
+    </div>
+    
+      
+    <div class="hold">确认</div>
+   </div>
+   <script type="text/javascript" src="js/common.js"></script>
+   <script type="text/javascript" src="js/zepto.js"></script>
+   <script type="text/javascript" src="js/underscore-min.js"></script>
+   <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+   <script type="text/javascript" src="js/picker.min.js"></script>
+   <script type="text/javascript"> 
+    $(document).ready(function(){
+   var tab= document.getElementById('tab');
+   var time= document.getElementById('time');
+   var sort,times,verificationCode;
+   var orderType=21;var arr=[];
+   /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                      url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+              var groupPurchaseId = request('groupPurchaseId');
+              var saleUserId=request("userId");
+              var code=request("code");
+                /*--获取网页传递的参数 end--*/
+                                var data1=[];
+                                var data2=[{text: '亲子拍',value: 0},
+                                           {text: '个人拍',value: 1},
+                                           {text: '闺蜜拍',value: 2},
+                                           {text: '情侣拍',value: 3},
+                                           {text: '宠物拍',value: 4},
+                                           {text: '校园拍',value: 5},
+                                           {text: '健身拍',value: 6},
+                                           {text: '逛街拍',value: 7}
+                                           ];
+                      var picker1 = new Picker({
+                                           data: [data2],
+                                           selectedIndex:[0]
+                                        });
+                      picker1.on('picker.select', function (selectedVal, selectedIndex) {
+                                tab.innerText = data2[selectedIndex[0]].text + ' ' ;
+                                sort=data2[selectedIndex[0]].text;
+                                if(sort=="校园拍"){
+                                    orderType=55;
+                                }
+                               console.log(sort)
+                        });
+                      tab.addEventListener('click', function () {
+                         picker1.show();
+                      });
+           
+
+
+                 $.ajax({
+                         type: 'POST',
+                         url: '/'+test+'/group/user/getTimeId',
+                         data: { groupPurchaseId:groupPurchaseId},
+                         dataType:'json',
+                         success: function(data){
+                              console.log(data);
+                              var code=data.code;
+                              var message=data.message;
+                              var data=data.data;
+                              if(code==200){
+                               $(data).each(function (index,ele){
+                                  var obj={};
+                                     if(ele.is_optional==1){
+                                      obj["text"]=ele.time+"(已被选)";
+                                      obj["value"]=index;
+                                      arr.push(index);
+                                      
+                                     }else{
+                                      obj["text"]=ele.time;
+                                      obj["value"]=index;
+                                     }
+                                     data1.push(obj);
+                                 });
+                                console.log(arr)
+                                var picker2 = new Picker({
+                                           data: [data1],
+                                           selectedIndex:[0]
+                                          });
+                               
+               time.addEventListener('click', function () {
+                 if(arr.length==8){
+                      alert("很遗憾，此团购已满员");
+                      location.href="http://app.allxiu.com/h5/new/join.html?groupPurchaseId="+groupPurchaseId+"&userId="+saleUserId;
+                    }else{
+                       picker2.show();
+                    }
+             });
+                 picker2.on('picker.select', function (selectedVal, selectedIndex) {
+                            var index_=data1[selectedIndex[0]].value;
+                            var chosen= $.inArray( index_, arr);
+                         if(chosen!=-1){
+                                alert("此时间段已经被选了，请换一个时间段吧")
+                          }else{
+                            time.innerText = data1[selectedIndex[0]].text + ' ' ;
+                             times=data1[selectedIndex[0]].text;
+                           }
+                        
+                 })
+                        
+                               
+                              
+                                $(".cancel").click(function(){
+                                   $(".add").show();
+                                })
+                               }else{
+                               alert(message)
+                                location.href="http://app.allxiu.com/h5/new/join.html?groupPurchaseId="+groupPurchaseId+"&userId="+saleUserId;
+                               }
+                              },
+                         error:function(){
+
+                         }
+                     });
+    // daojishi
+    var btn=document.getElementById("btn");
+      var countdown=60; 
+      function settime(val) { 
+                     if (countdown == 0) { 
+                        // val.setAttribute("disabled", false); 不可二次点击
+                        val.removeAttribute("disabled");
+                        val.value="获取验证码"; 
+                        $(val).removeClass("color1").addClass("color")
+                      } else { 
+                        val.setAttribute("disabled", true); 
+                        $(val).removeClass("color").addClass("color1")
+                        val.value=countdown + "s"; 
+                        countdown--; 
+                      } 
+                       setTimeout(function() { 
+                             settime(val) 
+                         },1000)
+                 }
+
+    // daojishi
+        var tel=$(".tel");
+        tel.focus(function(){
+           $(".tel").val("");
+        });
+        tel.blur(function(){
+            phone=tel.val()+'';
+           if(!(/^1[0-9]{10}$/.test(phone))){
+              tel.val("请输入有效的11位手机号码"); 
+             }else{
+                $.ajax({
+                         type: 'POST',
+                         url: '/'+test+'/user/sendCaptcha',
+                         data: { phoneNumber:phone,voice:false},
+                         dataType:'json',
+                         success: function(data){
+                              console.log(data);
+                            if(data.code==200){
+                              settime(btn);
+                              countdown=60;
+                            } 
+                          }
+                        });
+             };
+
+         });
+      $(".check").focus(function(){
+         $(".check").val("");
+        });
+       
+        $(".check").blur(function(){
+            verificationCode=$(".check").val();
+        }); 
+
+      $(".hold").click(function(){
+        if(times&&sort&&verificationCode&&phone){
+                 $.ajax({
+                         type: 'POST',
+                         url: '/'+test+'/user/loginWithSms',
+                         data: { phoneNumber:phone,captach:verificationCode,phoneModel:"h5"},
+                         dataType:'json',
+                         success: function(data){
+                              console.log(data); 
+                              var message=data.message;
+                              var result=data.data;
+                              var userId=result.id;
+                              var token=result.token;
+                           if(data.code==200){
+                         location.href="order.html?shotTime="+times+"&tabName="+sort+"&groupPurchaseId="+groupPurchaseId+"&orderType="+orderType+"&userId="+userId+"&token="+token+"&saleUserId="+saleUserId+"&code="+code;
+                            }else{
+                                alert(message)
+                              }
+                          }
+                        });
+       }else{
+        alert("请完成选择");
+
+       }          
+      })
+  })
+</script>
+   </body>
+</html>

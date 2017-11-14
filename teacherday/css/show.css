@@ -1,0 +1,226 @@
+
+.layout{
+	 width:100%;
+	 max-width: 750px;
+	 min-width: 300px;
+	 background: url(../images/bg1.png) center center no-repeat;
+	 background-size: cover;
+	 margin:-3.75rem auto;
+	 padding:1.9375rem 1.9375rem auto 1.9375rem;
+	 position:relative;
+}
+.wraper{
+	 width:20.625rem;
+	 margin:0 auto;
+	 border:1px solid rgba(255,255,255,0);
+	 background: url(../images/bg.png) no-repeat -9999px -9999px;
+	}
+.first{
+	 width:19.8125rem;
+	 height:11.125rem;
+	 background: url(../images/1.png) center center no-repeat;
+	 background-size:100%;
+	 margin:4.75rem auto 1.875rem;
+}
+
+.second .t_message{
+	 text-align: center;
+	 margin:0 auto 1.5625rem;
+
+	 color:#FFFFFF;
+	 font-size:0.9375rem;
+	 line-height:1.6875rem;
+	 background: url(../images/t_name.png) no-repeat -9999px -9999px;
+}
+.second .t_message span{
+	 color:#FAFD50;
+	  background: url(../images/t_phone.png) no-repeat -9999px -9999px;
+}
+ .second .money{
+ 	 width:7.5rem;
+ 	 height:1.875rem;
+ 	 color:#FAFD50;
+ 	 font-size:2.1875rem;
+ 	 margin:2.1875rem auto 3rem;
+ 	 background: url(../images/t_school.png) no-repeat -9999px -9999px;
+ }
+.progress{
+	 width:18.1875rem;
+	 height:1.5625rem;
+	 padding-left:0.25rem;
+	 background: url(../images/2.png) center center no-repeat;
+	 background-size:100%;
+	 position:relative;
+	 // overflow: hidden;
+}
+.progress .fill{
+	 height:1.4375rem;
+	 width:0;
+     background: url(../images/fill1.png) center center no-repeat;
+     background-size:cover;
+     position: relative;
+}
+.test{
+	 display:inline-block;
+     width:1.875rem;
+     height:0.75rem;
+     font-size:0.75rem;
+     color:#FBFD50;
+     position:absolute;
+     top:0.1875rem;
+     right:0.3125rem;
+      background: url(../images/stu_name.png) no-repeat -9999px -9999px;
+}
+.progress::after{
+     display:inline-block;
+ 	 width:2.375rem;
+ 	 height:0.875rem;
+ 	 content:"";
+ 	 background: url(../images/399.png) center center no-repeat;
+ 	 background-size:100%;
+ 	 position:absolute;
+ 	 top:0.25rem;
+ 	 right:-2.625rem;
+}
+
+.second #notice{
+	 display: block;
+	 width:8.3125rem;
+	 height:1.875rem;
+	 background: url(../images/xiangqing.png) center center no-repeat;
+	 background-size:100%;
+	 margin:1.875rem auto 1.0625rem;
+	 position:relative;
+	 z-index:100;
+	 float:left;
+}
+.second #must{
+	 display: block;
+	 width:8.3125rem;
+	 height:1.875rem;
+	 background: url(../images/must.png) center center no-repeat;
+	 background-size:100%;
+	 margin:1.875rem auto 1.0625rem;
+	 position:relative;
+	 z-index:100;
+	 float:right;
+}
+
+.fix_bottom{
+	 width:100%;
+	 height:3.8rem;
+	 position: fixed;
+	 bottom:0;
+	 left:0;
+	 background: url(../images/bottom.png) center center no-repeat;
+	 background-size:100%;
+	 padding-top:0.625rem;
+	 padding-left: 1.5625rem;
+	 padding-right:1.5625rem;
+	 z-index:100;
+}
+.fix_bottom .l{
+	 display:inline-block;
+	 width:7.9375rem;
+	 height:1.875rem;
+	 background: url(../images/l.png) center center no-repeat;
+	 background-size:100%;
+	 vertical-align: middle;
+	 float: left;
+ }
+.fix_bottom .r{
+	 display:inline-block;
+	 width:7.9375rem;
+	 height:1.875rem;
+	 line-height:1.875rem;
+	 color:#FFFFFF;
+	 font-size: 0.875rem;
+	 background: url(../images/r.png) center center no-repeat;
+	 background-size:100%;
+	 float:right;
+}
+.cover{
+     width: 100%;
+     height:42.6875rem;
+     background: #000000;
+     padding: 0.65rem 1.375rem;
+     display: none; 
+     position: fixed;
+     top: 0;
+     left: 0;
+     z-index:100;
+      }
+.paper{
+     width: 20.75rem;
+     height: 34.1875rem;
+     background:url(../images/notice.png) center center no-repeat;
+     background-size: 100%;
+     position: relative;
+      }
+.close{
+     width: 1.4375rem;
+     height: 1.4375rem;
+     border:none;
+     background: url(../images/close.png) center center no-repeat;
+     background-size: 100%;
+     position: absolute;
+     bottom: -2.0625rem;
+     left: 9.625rem;
+      }
+.third{
+     border-top: 2px solid #fff;
+     border-image: url(../images/line.png) 2 2 2 2 round ;
+      }
+.wish{
+	 height:6rem;
+	 font-size:0.75rem;
+	 color:#fff;
+	 position: relative;
+	 padding-top: 0.5625rem;
+	 border-bottom: 2px solid #fff;
+     border-image: url(../images/line.png) 0 2 2 2 round ;
+}
+.circle{
+	 width:3.125rem;
+	 height:3.125rem;
+	 border-radius: 1.5625rem;
+	 background: #fff;
+     float:left;
+     margin-right: 0.625rem;
+}
+.circle img{
+	 width:3.125rem;
+	 height:3.125rem;
+	 border-radius: 1.5625rem;
+}
+.wish_words{
+     position:absolute;
+     top:0.375rem;
+     left:3.75rem;
+     background: url(../images/stu_class.png) no-repeat -9999px -9999px;
+}
+.wish .stu_name{
+	 font-size:0.9375rem;
+	}
+.wish .money{
+	 position: absolute;
+	 top:0.1875rem;
+	 right:2px;
+	 font-size:1.25rem;
+	  background: url(../images/stu_wishes.png) no-repeat -9999px -9999px;
+}
+.border_fix{
+	 width:100%;
+	 height:41.6875rem;
+     background: url(../images/border_fix.png) center center no-repeat;
+	 background-size:100%;
+	 position: fixed;
+	 top:0;
+	 left:0;
+}
+.forth{
+	 width:100%;
+	 height:3.5rem;
+	 background: url(../images/input.png) center center no-repeat;
+	 background-size:100%;
+}

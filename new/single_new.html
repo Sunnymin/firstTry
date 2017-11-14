@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+         <title></title>
+         <link rel="stylesheet" type="text/css" href="css/base.css">
+         <link rel="stylesheet" type="text/css" href="css/single_new.css">
+          <script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a3d23724d5078b24']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+   </head>
+   <body>
+   <div class="layout">
+   	   <div class="intro introduce">
+   	     <div class="cover">
+           
+   	    </div>
+   	    <!-- <div class="mess clearfix">
+   	        
+        </div> -->
+         <!-- 服务介绍 begin  -->
+                     <!-- <div class="introduce_server">
+                       <div class='content'>
+                       </div>
+                     </div> -->
+                </div>
+                  <!-- 服务介绍 end  -->
+                  <div class="photoes">
+                 </div>
+   </div>
+   <script type="text/template" id="template1">
+          <div class="intro_l">
+            <p><%-infor.serviceUserName%></p>
+             <span>
+                    <%if(infor.level=="铜级"){%>
+                    <img src="./images/copper.png">
+                    </span>
+                  <span class="color2">美片<%-infor.level%>摄影师</span>
+                    <%}else if(infor.level=="银级"){%>
+                    <img src="./images/silver.png">
+                    </span>
+                  <span class="color1l">美片<%-infor.level%>摄影师</span>
+                  <%}else if(infor.level=="钻级"){%>
+                    <img src="./images/diamond.png">
+                    </span>
+                  <span class="color1l">美片<%-infor.level%>摄影师</span>
+                    <%}else if(infor.level=="金级"){%>
+                    <img src="./images/gold.png">
+                    </span>
+                  <span class="color">美片<%-infor.level%>摄影师</span>
+                    <%}%>
+                  
+            </div>
+            <div class="intro_r">
+            <a href=<%-"photographer_new.html?serviceUserId="+serivceUserId%>>
+              <img src=<%-"http://image.allxiu.com/"+infor.serviceUserHeadUrl%> 
+                       style="width:4.125rem;height:4.125rem">
+            </a>
+          </div>
+  </script>
+  <!-- <script type="text/template" id="template2">
+             <span></span> 
+             <div>
+              <span>作品类型</span>
+              <p><%-infor.tabName%></p>
+             </div> 
+              <div>
+              <span>作品报价</span>
+              <p>￥<%-infor.price%></p>
+             </div>
+    </script>  -->
+    <!-- <script type="text/template" id="template3">
+                          <div>
+                                <span class='time'><img src="images/hour1.png"></span>
+                                <span><%-infor.shot_duration%>小时拍摄</span>
+                             </div>
+                             <div>
+                                <span class='count'><img src="images/fixed.png"></span>
+                                <span><%-infor.shot_num%>张照片</span>
+                             </div>
+                             <div>
+                                <span class='truing'><img src="images/add.png"></span>
+                                <span><%-infor.refinement_num%>张精修</span>
+                             </div>
+                             <div>
+                                <span class='huzhuang'><img src="images/makeup.png"></span>
+                                 <span><%if(infor.isOfferMakeup==0){%>
+                                化妆自备
+                                <%}else{%>
+                                提供化妆
+                                 <%}%> 
+                                </span>
+                             </div>
+                             <div>
+                                <span class='clothes'><img src="images/cloth.png"></span>
+                                 <span><%if(infor.isOfferClothing==0){%>
+                                服装自备
+                                <%}else{%>
+                                提供服装
+                                 <%}%> 
+                                </span>
+                             </div>
+                             <div>
+                                <span class='chengpin'><img src="images/chengpin.png"></span>
+                                 <span><%if(infor.isOfferOriginalimg==0){%>
+                                不提供成品
+                                <%}else{%>
+                                提供成品
+                                 <%}%> 
+                                </span>
+                             </div> 
+    </script>  -->
+    <script type="text/template" id="template4">
+    <p><%-infor.workName%></p>
+      <%_.each(model,function(item,i){%>
+       <img class="test-lazyload" src="images/blank.png" data-original=<%-"http://image.allxiu.com/"+model[i].imgUrl%> 
+                       style="width:100%">
+     <%});%>
+     </script> 
+   <script type="text/javascript" src="js/common.js"></script>
+   <script type="text/javascript" src="js/zepto.js"></script>
+   <script type="text/javascript" src="js/underscore-min.js"></script>
+   <script type="text/javascript" src="js/lazyload.js"></script>
+   <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+   <script type="text/javascript">
+     $(function(){
+      var url = location.href;var imgUrl;
+       /*--获取网页传递的参数--*/
+                   function request(paras)
+                 { 
+                     var url = location.href; 
+                     var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+                     var paraObj = {} 
+                     for (i=0; j=paraString[i]; i++){ 
+                     paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+                 } 
+                     var returnValue = paraObj[paras.toLowerCase()]; 
+                     if(typeof(returnValue)=="undefined"){ 
+                     return ""; 
+                 }else{ 
+                     return returnValue; 
+                 } 
+               }
+               var workId = request('workId');
+               if(workId==""||workId=="undefined"){
+        workId=request('photographerWorkId');
+         }
+
+               var serivceUserId = request('serivceUserId');
+              /*--获取网页传递的参数 end--*/
+             
+      $.ajax({
+          type: 'POST',
+          url: '/'+test+'/photographer/work/details',
+          data: { workId:workId,serviceUserId:serivceUserId},
+          dataType: 'json',
+          success: function(data){
+             console.log(data);
+             var infor=data.data;
+             var model=infor.photographerWorkImgs;
+              imgUrl="http://image.allxiu.com/"+model[0].imgUrl+"?imageView2/2/w/640",
+              $("title").html("【"+infor.serviceUserName+"】-"+infor.tabName+"("+infor.provinceName+"·"+infor.cityName+","+infor.placeName);
+
+             var template1 = _.template($('#template1').html())
+             $(".cover").html(template1({infor:infor,serivceUserId:serivceUserId}));
+
+              // var template2 = _.template($('#template2').html())
+              // $(".mess").html(template2({infor:infor}));
+
+              //  var template3 = _.template($('#template3').html())
+              // $(".content").html(template3({infor:infor}));
+        
+               var template4= _.template($('#template4').html())
+              $(".photoes").html(template4({model:model,infor:infor}));
+              // 图片懒加载
+              $('.test-lazyload').picLazyLoad({
+               threshold: 100,
+                placeholder: './images/blank.png'
+             });
+            // 图片懒加载end
+              // 第二次请求 begin
+       $.ajax({
+              type: 'POST',
+              url: '/'+test+'/wxconfig/getConfig',
+              data:{url:url},
+             dataType: 'json',
+             success: function(data){
+               var datas = data.data;
+                
+wx.config({
+    debug: false, 
+    appId: datas.appId, 
+    timestamp: datas.timestamp, 
+    nonceStr: datas.nonceStr, 
+    signature: datas.signature,
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ'] 
+});
+
+wx.ready(function(){
+    // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareTimeline({
+        title:$("title").html(), // 分享标题
+        desc: $("title").html(),
+        link:location.href,
+        imgUrl:imgUrl,// 分享图标
+    });
+    // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareAppMessage({
+        title: '拍照片，上美片', // 分享标题
+        desc: $("title").html(), // 分享描述
+        link:location.href,
+        imgUrl:imgUrl, // 分享图标
+        type: 'link', // 分享类型,music、video或link，不填默认为link
+    });
+    // “分享到QQ”
+     wx.onMenuShareQQ({
+       title: '拍照片，上美片', // 分享标题
+        desc: $("title").html(), // 分享描述
+        link:location.href,
+        imgUrl:imgUrl, // 分享图标
+        type: 'link', // 分享类型,music、video或link，不填默认为link
+      
+    });
+});
+wx.error(function(res){
+   console.log(111)
+    
+});
+
+
+                 },
+             error: function(){
+                 
+             }
+      });
+                            // 第二次请求end 
+          }
+        });
+     })
+   </script>
+   </body>
+</html>

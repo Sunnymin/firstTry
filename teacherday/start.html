@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width = device-width,initial-scale=1.0,maxinum-scale=1.0,minimum-scale=1.0, user-scalable=no'>
+    <title>美片教师节</title>
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+    <link rel="stylesheet" type="text/css" href="./css/start.css">
+    <!-- <link rel="shortcut icon" href="./images/" type="image/x-icon" /> -->
+    <!-- <img src="./images/bg.png" style="display:none"> -->
+</head>
+<body>
+<div class="layout">
+	 <div class="wraper">
+	    <div class="teacher_message">
+	    	<p></p>
+	    	<div class="t_school"><span></span><input type="text" name="" value=""></div>
+	    	<div class="t_name"><span></span> <input type="text" name="" value=""></div>
+	    	<div class="t_phone"><span></span> <input type="tel" name="" value="" id="phone"></div>
+	    </div>	
+	    <div class="student_message">
+	    	<p></p>
+	    	<div class="stu_name"><span></span><input type="text" name="" value=""></div>
+	    	<div class="stu_phone" ><span></span><input type="tel" name="" value="" id="stu_phone"></div>
+	    	<div class="stu_class"><span></span><input type="text" name="" value=""></div>
+	    	<div class="stu_wishes"><span></span>
+	    	<textarea>例：&#13;&#10;在您关注的目光之下，给予了我无尽的信心&#13;&#10;和勇气！您是我永远的老师！衷心祝您健康幸福！&#13;&#10;（限40字内）</textarea></div>
+	    	<button id="pay"></button>
+	    	
+	    </div>   
+	 </div>
+</div>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./dist/pingpp.js"></script>
+<script type="text/javascript" src="./js/zepto.min.js"></script>
+<script type="text/javascript" src="./js/pay_new.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+$(function(){
+	var url = window.location.href;
+	
+	
+	 $.ajax({
+              type: 'POST',
+              url: '/weixin/wxconfig/getConfig',
+              data:{url:url},
+             dataType: 'json',
+             success: function(data){
+                
+                var datas = data.data;
+                
+wx.config({
+    debug: false, 
+    appId: datas.appId, 
+    timestamp: datas.timestamp, 
+    nonceStr: datas.nonceStr, 
+    signature: datas.signature,
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ'] 
+});
+
+wx.ready(function(){
+    // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+   wx.onMenuShareTimeline({
+        title: '班长课代表必看', // 分享标题
+        desc: "教师节别人送花送礼物，我给老师送美片",
+        link:"http://test.allxiu.com/h5/teacherday/start.html",
+        imgUrl: "http://7xlnue.com2.z0.glb.qiniucdn.com/219052212924779143.jpg" // 分享图标
+    });
+    // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareAppMessage({
+        title: '班长课代表必看', // 分享标题
+        desc: "教师节别人送花送礼物，我给老师送美片", // 分享描述
+        link:"http://test.allxiu.com/h5/teacherday/start.html",
+        imgUrl: "http://7xlnue.com2.z0.glb.qiniucdn.com/219052212924779143.jpg", // 分享图标
+        type: 'link', // 分享类型,music、video或link，不填默认为link
+    });
+    // “分享到QQ”
+     wx.onMenuShareQQ({
+      title: '班长课代表必看',
+      desc: '教师节别人送花送礼物，我给老师送美片',
+      link: "http://test.allxiu.com/h5/teacherday/start.html",
+      imgUrl: 'http://7xlnue.com2.z0.glb.qiniucdn.com/219052212924779143.jpg',
+     
+    });
+});
+wx.error(function(res){
+   console.log(res)
+    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+
+});
+
+
+                 },
+             error: function(){
+                 console.log('error!')
+             }
+      });
+
+ })
+</script>
+</body>
+</html>

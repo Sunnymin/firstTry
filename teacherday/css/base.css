@@ -1,0 +1,42 @@
+/*    reset  css */
+*,
+::before,
+::after{
+     margin: 0;
+     padding: 0;
+     -webkit-tap-highlight-color: transparent;
+     -webkit-box-sizing: border-box;
+     box-sizing: border-box;
+}
+body{
+     font-family: "MicroSoft YaHei",sans-serif;/*设备默认字体*/
+ }
+a{
+     color:#ffffff;
+     text-decoration: none;
+}
+a:hover,a:visited{
+     color:#ffffff;
+     text-decoration: none;
+}
+ul,ol{
+    list-style: none;
+}
+input,button{
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+/*    reset  css */
+}
+.clearfix::before,
+.clearfix::after{
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.swiper-pagination-bullet-active{
+    color:#ffffff;
+}

@@ -1,0 +1,19 @@
+.layout{
+      width: 100%;
+      max-width: 750px;
+      min-width: 300px;
+      margin: 0 auto;
+      position: relative;
+      padding:2.375rem 1.125rem 0 0.9375rem;
+      color:#333333;
+}
+.layout h3{
+ margin-bottom: 58px;
+}
+.layout .prograph{
+	margin-bottom:2rem;
+}
+.layout .hide{
+	height:1.875rem;
+	line-height:1.875rem;
+}
